@@ -2,13 +2,13 @@ program Vendas;
 
 uses
   Vcl.Forms,
-  UPrincipal in 'UPrincipal.pas' {Form1};
+  UPrincipal in 'UPrincipal.pas' {frmPrincipal};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.
