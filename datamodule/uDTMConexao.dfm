@@ -6,18 +6,15 @@ object dtmConexao: TdtmConexao
     AutoEncodeStrings = True
     Catalog = ''
     Properties.Strings = (
-      'controls_cp=CP_UTF16')
-    Connected = True
+      'controls_cp=CP_UTF16'
+      'AutoEncodeStrings=True')
     SQLHourGlass = True
-    HostName = '.\SQLEXPRESS'
+    HostName = ''
     Port = 0
-    Database = 'vendas'
-    User = 'sa'
-    Password = 'ciih'
-    Protocol = 'mssql'
-    LibraryLocation = 
-      'C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdb' +
-      'lib.dll'
+    Database = ''
+    User = ''
+    Password = ''
+    Protocol = ''
     Left = 176
     Top = 152
   end
