@@ -4,11 +4,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   BorderStyle = bsDialog
   Caption = 'Informe aqui o t'#237'tulo'
   ClientHeight = 441
-<<<<<<< Updated upstream
-  ClientWidth = 624
-=======
   ClientWidth = 933
->>>>>>> Stashed changes
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +13,6 @@ object frmTelaHeranca: TfrmTelaHeranca
   Font.Style = []
   Position = poDesktopCenter
   TextHeight = 15
-<<<<<<< Updated upstream
-=======
   object pgcPrincipal: TPageControl
     Left = 0
     Top = 0
@@ -140,5 +134,4 @@ object frmTelaHeranca: TfrmTelaHeranca
       TabOrder = 1
     end
   end
->>>>>>> Stashed changes
 end

@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream
-object Form1: TForm1
-  Left = 0
-  Top = 0
-  Caption = 'Form1'
-  ClientHeight = 441
-  ClientWidth = 624
-=======
 object frmTelaHeranca: TfrmTelaHeranca
   Left = 0
   Top = 0
@@ -13,16 +5,12 @@ object frmTelaHeranca: TfrmTelaHeranca
   Caption = 'Informe aqui o t'#237'tulo'
   ClientHeight = 441
   ClientWidth = 933
->>>>>>> Stashed changes
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-<<<<<<< Updated upstream
-  TextHeight = 15
-=======
   Position = poDesktopCenter
   TextHeight = 15
   object pgcPrincipal: TPageControl
@@ -146,5 +134,4 @@ object frmTelaHeranca: TfrmTelaHeranca
       TabOrder = 1
     end
   end
->>>>>>> Stashed changes
 end
