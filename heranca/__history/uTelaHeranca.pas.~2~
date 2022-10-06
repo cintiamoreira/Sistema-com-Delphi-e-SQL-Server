@@ -4,7 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+<<<<<<< Updated upstream
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
 
+type
+  TfrmTelaHeranca = class(TForm)
+=======
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ComCtrls, Vcl.ExtCtrls;
 
@@ -25,7 +30,7 @@ type
     btnApagar: TBitBtn;
     btnGravar: TBitBtn;
     btnFechar: TBitBtn;
-
+>>>>>>> Stashed changes
   private
     { Private declarations }
   public
