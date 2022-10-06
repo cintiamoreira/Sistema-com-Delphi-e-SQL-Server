@@ -28,6 +28,8 @@ type
     btnFechar: TBitBtn;
     QryListagem: TZQuery;
     dtsListagem: TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -41,5 +43,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmTelaHeranca.btnFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
+begin
+     QryListagem.Connection := dtmConexao.ConexaoDB;
+     dtsListagem.DataSet := QryListagem;
+     grdListagem.DataSource := dtsListagem;
+end;
 
 end.

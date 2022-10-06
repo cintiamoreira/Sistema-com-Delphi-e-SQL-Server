@@ -12,6 +12,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnCreate = FormCreate
   TextHeight = 15
   object pgcPrincipal: TPageControl
     Left = 0
@@ -75,6 +76,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Top = 6
       Width = 224
       Height = 25
+      DataSource = dtsListagem
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       TabOrder = 2
     end
@@ -109,6 +111,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Fechar'
       TabOrder = 6
+      OnClick = btnFecharClick
     end
   end
   object pnlListagem: TPanel
