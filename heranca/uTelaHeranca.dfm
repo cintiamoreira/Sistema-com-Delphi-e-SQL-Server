@@ -21,7 +21,8 @@ object frmTelaHeranca: TfrmTelaHeranca
     ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 624
+    ExplicitWidth = 929
+    ExplicitHeight = 399
     object tabListagem: TTabSheet
       Caption = 'Listagem'
       object grdListagem: TDBGrid
@@ -30,6 +31,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         Width = 925
         Height = 370
         Align = alClient
+        DataSource = dtsListagem
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -50,9 +52,8 @@ object frmTelaHeranca: TfrmTelaHeranca
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 328
-    ExplicitTop = 304
-    ExplicitWidth = 185
+    ExplicitTop = 399
+    ExplicitWidth = 929
     object btnNovo: TBitBtn
       Left = 16
       Top = 6
@@ -69,7 +70,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Caption = '&Alterar'
       TabOrder = 1
     end
-    object bdbNavigator: TDBNavigator
+    object btnNavigator: TDBNavigator
       Left = 536
       Top = 6
       Width = 224
@@ -133,5 +134,16 @@ object frmTelaHeranca: TfrmTelaHeranca
       Caption = '&Pesquisar'
       TabOrder = 1
     end
+  end
+  object QryListagem: TZQuery
+    Connection = dtmConexao.ConexaoDB
+    Params = <>
+    Left = 732
+    Top = 42
+  end
+  object dtsListagem: TDataSource
+    DataSet = QryListagem
+    Left = 828
+    Top = 42
   end
 end
