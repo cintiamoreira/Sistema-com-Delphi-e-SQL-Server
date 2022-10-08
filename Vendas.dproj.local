@@ -6,8 +6,8 @@
     <Transaction>2022/09/16 11:28:58.000.335,C:\Users\cinti\Desktop\Projetos Delphi\Inicial.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Unit1.dfm</Transaction>
     <Transaction>2022/09/16 11:32:05.000.049,C:\Users\cinti\Desktop\Projetos Delphi\Project1.dproj=C:\Users\cinti\Desktop\Projetos Delphi\Project1.dproj</Transaction>
     <Transaction>2022/09/20 14:24:47.000.317,=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
-    <Transaction>2022/09/20 14:26:37.000.881,C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas=C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas</Transaction>
     <Transaction>2022/09/20 14:26:37.000.881,C:\Users\cinti\Desktop\Projetos Delphi\Unit2.dfm=C:\Users\cinti\Desktop\Projetos Delphi\TELA2.dfm</Transaction>
+    <Transaction>2022/09/20 14:26:37.000.881,C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas=C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas</Transaction>
     <Transaction>2022/09/20 14:58:31.000.293,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas=</Transaction>
     <Transaction>2022/09/20 14:59:49.000.847,=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
     <Transaction>2022/09/20 15:01:32.000.283,C:\Users\cinti\Desktop\Projetos Delphi\Unit2.dfm=C:\Users\cinti\Desktop\Projetos Delphi\TELA2.dfm</Transaction>
@@ -28,9 +28,10 @@
     <Transaction>2022/10/05 16:28:37.000.876,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uDTMConexao.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/05 16:28:37.000.876,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uDTMConexao.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm</Transaction>
     <Transaction>2022/10/06 14:58:37.000.156,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\heranca\uTelaHeranca.pas</Transaction>
-    <Transaction>2022/10/06 16:37:09.456,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/06 16:41:03.944,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/06 16:41:03.945,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm</Transaction>
+    <Transaction>2022/10/06 16:37:09.000.456,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
+    <Transaction>2022/10/06 16:41:03.000.945,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm</Transaction>
+    <Transaction>2022/10/06 16:41:03.000.944,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
+    <Transaction>2022/10/08 16:59:54.213,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\terceiros\Enter.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="cadastro"/>
@@ -42,6 +43,8 @@
     <File Path="heranca"/>
     <File Path="heranca\uTelaHeranca.pas"/>
     <File Path="heranca\uTelaHeranca.dfm"/>
+    <File Path="terceiros"/>
+    <File Path="terceiros\Enter.pas"/>
     <File Path="UPrincipal.pas"/>
     <File Path="UPrincipal.dfm"/>
   </ProjectSortOrder>
