@@ -19,7 +19,7 @@ object frmTelaHeranca: TfrmTelaHeranca
     Top = 0
     Width = 933
     Height = 400
-    ActivePage = tabListagem
+    ActivePage = tabManutencao
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 929
@@ -62,6 +62,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Novo'
       TabOrder = 0
+      OnClick = btnNovoClick
     end
     object btnAlterar: TBitBtn
       Left = 97
@@ -70,6 +71,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 26
       Caption = '&Alterar'
       TabOrder = 1
+      OnClick = btnAlterarClick
     end
     object btnNavigator: TDBNavigator
       Left = 536
@@ -87,6 +89,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Cancelar'
       TabOrder = 3
+      OnClick = btnCancelarClick
     end
     object btnApagar: TBitBtn
       Left = 340
@@ -95,6 +98,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = 'Apaga&r'
       TabOrder = 4
+      OnClick = btnApagarClick
     end
     object btnGravar: TBitBtn
       Left = 259
@@ -103,6 +107,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Gravar'
       TabOrder = 5
+      OnClick = btnGravarClick
     end
     object btnFechar: TBitBtn
       Left = 845
