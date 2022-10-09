@@ -1,0 +1,56 @@
+inherited frmCadCategoria: TfrmCadCategoria
+  Caption = 'Cadastro de Categorias'
+  ClientHeight = 621
+  ExplicitHeight = 659
+  TextHeight = 15
+  inherited pgcPrincipal: TPageControl
+    Height = 580
+    ActivePage = tabListagem
+    inherited tabListagem: TTabSheet
+      ExplicitHeight = 550
+      inherited grdListagem: TDBGrid
+        Height = 550
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'categoriaId'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Visible = True
+          end>
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ExplicitHeight = 550
+    end
+  end
+  inherited pnlRodape: TPanel
+    Top = 580
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = ()
+    end
+    inherited btnFechar: TBitBtn
+      Left = 841
+      ExplicitLeft = 837
+    end
+  end
+  inherited QryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT categoriaId,'
+      #9#9'descricao'
+      #9#9'FROM categorias')
+    object intgrfldQryListagemcategoriaId: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'categoriaId'
+      ReadOnly = True
+    end
+    object wdstrngfldQryListagemdescricao: TWideStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+      Size = 30
+    end
+  end
+end

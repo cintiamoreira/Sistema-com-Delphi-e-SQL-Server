@@ -7,7 +7,7 @@ uses
 
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ComCtrls, Vcl.ExtCtrls,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset, uDTMConexao;
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, uDTMConexao, uEnum;
 
 type
   TfrmTelaHeranca = class(TForm)
@@ -28,6 +28,7 @@ type
     btnFechar: TBitBtn;
     QryListagem: TZQuery;
     dtsListagem: TDataSource;
+    lblIndice: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -36,9 +37,15 @@ type
     procedure btnGravarClick(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure grdListagemTitleClick(Column: TColumn);
 
 private
     { Private declarations }
+
+  EstadoDoCadastro : TEstadoDoCadastro;
+
   procedure
     ControlarBotoes
     (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
@@ -86,24 +93,36 @@ end;
 procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
 begin
    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
+
+   EstadoDoCadastro := ecInserir;
+
 end;
 
 
 procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
 begin
   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
+
+  EstadoDoCadastro := ecAlterar;
+
 end;
 
 procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
 begin
   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
   ControlarIndiceTab(pgcPrincipal, 0);
+
+  EstadoDoCadastro := ecNenhum;
+
 end;
 
 procedure TfrmTelaHeranca.btnCancelarClick(Sender: TObject);
 begin
   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
   ControlarIndiceTab(pgcPrincipal, 0);
+
+  EstadoDoCadastro := ecNenhum;
+
 end;
 
 procedure TfrmTelaHeranca.btnFecharClick(Sender: TObject);
@@ -113,8 +132,27 @@ end;
 
 procedure TfrmTelaHeranca.btnGravarClick(Sender: TObject);
 begin
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
-  ControlarIndiceTab(pgcPrincipal, 0);
+  Try
+    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
+    ControlarIndiceTab(pgcPrincipal, 0);
+
+    if (EstadoDoCadastro = ecInserir ) then
+        ShowMessage('Inserir')
+
+    else if (EstadoDoCadastro = ecAlterar) then
+        ShowMessage ('Alterado')
+
+    else
+        ShowMessage ('Nada aconteceu');
+
+  finally
+    EstadoDoCadastro := ecNenhum;
+  end;
+end;
+
+procedure TfrmTelaHeranca.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  QryListagem.Close;
 end;
 
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
@@ -122,6 +160,18 @@ begin
   QryListagem.Connection := dtmConexao.ConexaoDB;
   dtsListagem.DataSet := QryListagem;
   grdListagem.DataSource := dtsListagem;
+end;
+
+procedure TfrmTelaHeranca.FormShow(Sender: TObject);
+begin
+  if (QryListagem.SQL.Text <> EmptyStr) then begin
+      QryListagem.Open;
+  end;
+end;
+
+procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
+begin
+  ShowMessage(Column.FieldName);
 end;
 
 end.

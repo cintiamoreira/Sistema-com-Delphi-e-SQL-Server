@@ -12,14 +12,16 @@ object frmTelaHeranca: TfrmTelaHeranca
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object pgcPrincipal: TPageControl
     Left = 0
     Top = 0
     Width = 933
     Height = 400
-    ActivePage = tabManutencao
+    ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 929
@@ -39,11 +41,13 @@ object frmTelaHeranca: TfrmTelaHeranca
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnTitleClick = grdListagemTitleClick
       end
     end
     object tabManutencao: TTabSheet
       Caption = 'Manuten'#231#227'o'
       ImageIndex = 1
+      OnShow = FormShow
     end
   end
   object pnlRodape: TPanel
@@ -55,6 +59,9 @@ object frmTelaHeranca: TfrmTelaHeranca
     TabOrder = 1
     ExplicitTop = 399
     ExplicitWidth = 929
+    DesignSize = (
+      933
+      41)
     object btnNovo: TBitBtn
       Left = 16
       Top = 6
@@ -110,24 +117,33 @@ object frmTelaHeranca: TfrmTelaHeranca
       OnClick = btnGravarClick
     end
     object btnFechar: TBitBtn
-      Left = 845
+      Left = 841
       Top = 6
       Width = 75
       Height = 25
+      Anchors = [akTop, akRight]
       Caption = '&Fechar'
       TabOrder = 6
       OnClick = btnFecharClick
+      ExplicitLeft = 837
     end
   end
   object pnlListagem: TPanel
-    Left = 4
+    Left = 8
     Top = 26
-    Width = 929
+    Width = 917
     Height = 87
     TabOrder = 2
+    object lblIndice: TLabel
+      Left = 8
+      Top = 12
+      Width = 88
+      Height = 15
+      Caption = 'Campo Pesquisa'
+    end
     object mskPesquisar: TMaskEdit
-      Left = 12
-      Top = 24
+      Left = 0
+      Top = 33
       Width = 514
       Height = 23
       TabOrder = 0
@@ -135,8 +151,8 @@ object frmTelaHeranca: TfrmTelaHeranca
       TextHint = 'Digite aqui'
     end
     object btnPesquisar: TBitBtn
-      Left = 532
-      Top = 24
+      Left = 528
+      Top = 33
       Width = 93
       Height = 23
       Caption = '&Pesquisar'
