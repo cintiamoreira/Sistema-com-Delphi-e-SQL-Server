@@ -40,6 +40,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grdListagemTitleClick(Column: TColumn);
+    procedure mskPesquisarChange(Sender: TObject);
 
 private
     { Private declarations }
@@ -54,9 +55,14 @@ private
     Flag : Boolean);
 
   procedure ControlarIndiceTab (pgcPrincipal: TPageControl; indice: Integer);
+    function RetornarCampoTraduzido(Campo: string): string;
+    procedure ExibirLabelIndice(Campo: string; aLabel: TLabel);
 
 public
     { Public declarations }
+
+    IndiceAtual : string;
+
   end;
 
 var
@@ -74,13 +80,14 @@ procedure TfrmTelaHeranca.ControlarBotoes
   Flag : Boolean);
 
 begin
+
   btnNovo.Enabled := Flag;
   btnApagar.Enabled := Flag;
   btnAlterar.Enabled := Flag;
-  Navegador.Enabled := Flag;
-  pgcPrincipal.Pages[0].TabVisible := Flag;
   btnCancelar.Enabled := not (Flag);
   btnGravar.Enabled := not (Flag);
+  Navegador.Enabled := Flag;
+  pgcPrincipal.Pages[0].TabVisible := Flag;
 end;
 
 
@@ -90,14 +97,33 @@ begin
   pgcPrincipal.TabIndex := Indice;
 end;
 
-procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
+
+function TfrmTelaHeranca.RetornarCampoTraduzido (Campo : string) : string;
+var i : Integer;
+
 begin
-   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
-
-   EstadoDoCadastro := ecInserir;
-
+  for I := 0 to QryListagem.Fields.Count -1 do begin
+    if  QryListagem.Fields[i].FieldName=Campo then begin
+        Result := QryListagem.Fields[i].DisplayLabel;
+        Break;
+    end;
+  end;
+    
 end;
 
+procedure TfrmTelaHeranca.ExibirLabelIndice (Campo: string; aLabel : TLabel);
+begin        
+  aLabel.Caption := RetornarCampoTraduzido(Campo);
+end;      
+
+procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
+begin
+   
+   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
+   
+   EstadoDoCadastro := ecInserir;
+
+end;      
 
 procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
 begin
@@ -157,21 +183,38 @@ end;
 
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
 begin
+   
   QryListagem.Connection := dtmConexao.ConexaoDB;
+  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
   dtsListagem.DataSet := QryListagem;
   grdListagem.DataSource := dtsListagem;
+  grdListagem.Options := [dgTitles,dgIndicator,dgColumnResize,dgColLines,
+                          dgRowLines,dgTabs,dgRowSelect,dgAlwaysShowSelection,
+                          dgCancelOnExit,dgTitleClick,dgTitleHotTrack];
 end;
 
 procedure TfrmTelaHeranca.FormShow(Sender: TObject);
 begin
   if (QryListagem.SQL.Text <> EmptyStr) then begin
+      QryListagem.IndexFieldNames := IndiceAtual;
+      ExibirLabelIndice(IndiceAtual, lblIndice);
       QryListagem.Open;
   end;
+  
+  ControlarIndiceTab(pgcPrincipal, 0);
+  
 end;
 
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
 begin
-  ShowMessage(Column.FieldName);
+  IndiceAtual := Column.FieldName;
+  QryListagem.IndexFieldNames := IndiceAtual;
+  ExibirLabelIndice(IndiceAtual, lblIndice);   
+end;
+                                   
+procedure TfrmTelaHeranca.mskPesquisarChange(Sender: TObject);
+begin
+  QryListagem.Locate(IndiceAtual, TMaskEdit (Sender).Text, [loPartialKey, loCaseInsensitive]);
 end;
 
 end.
