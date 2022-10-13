@@ -62,6 +62,8 @@ public
     { Public declarations }
 
     IndiceAtual : string;
+    function Excluir : Boolean; virtual;
+    function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; virtual;
 
   end;
 
@@ -72,6 +74,10 @@ implementation
 
 {$R *.dfm}
 
+//Region serve para esconder um bloco de codigo dentro de uma region para separar
+
+{$REGION 'FUNÇÕES E PROCEDURES'}
+
 //Procedimento de Controle de Tela
 procedure TfrmTelaHeranca.ControlarBotoes
   (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
@@ -80,12 +86,12 @@ procedure TfrmTelaHeranca.ControlarBotoes
   Flag : Boolean);
 
 begin
-
   btnNovo.Enabled := Flag;
   btnApagar.Enabled := Flag;
   btnAlterar.Enabled := Flag;
   btnCancelar.Enabled := not (Flag);
   btnGravar.Enabled := not (Flag);
+
   Navegador.Enabled := Flag;
   pgcPrincipal.Pages[0].TabVisible := Flag;
 end;
@@ -103,18 +109,37 @@ var i : Integer;
 
 begin
   for I := 0 to QryListagem.Fields.Count -1 do begin
-    if  QryListagem.Fields[i].FieldName=Campo then begin
+    if  LowerCase (QryListagem.Fields[i].FieldName) = LowerCase (Campo) then begin
         Result := QryListagem.Fields[i].DisplayLabel;
         Break;
     end;
   end;
-    
 end;
 
 procedure TfrmTelaHeranca.ExibirLabelIndice (Campo: string; aLabel : TLabel);
 begin        
   aLabel.Caption := RetornarCampoTraduzido(Campo);
-end;      
+end;
+
+{$ENDREGION}
+
+{$REGION 'MÉTODOS VIRTUAIS'}
+function TfrmTelaHeranca.Excluir: Boolean;
+begin
+   ShowMessage('DELETADO');
+   Result := True;
+end;
+
+function TfrmTelaHeranca.Gravar(EstadoDoCadastro : TEstadoDoCadastro): Boolean;
+begin
+  if (EstadoDoCadastro = ecInserir) then
+   ShowMessage('Inserir')
+   else if (EstadoDoCadastro = ecAlterar) then
+   ShowMessage('Alterado');
+   Result := True;
+end;
+
+{$ENDREGION}
 
 procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
 begin
@@ -123,7 +148,7 @@ begin
    
    EstadoDoCadastro := ecInserir;
 
-end;      
+end;
 
 procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
 begin
@@ -135,11 +160,13 @@ end;
 
 procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
 begin
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
-  ControlarIndiceTab(pgcPrincipal, 0);
+  if Excluir then begin
 
-  EstadoDoCadastro := ecNenhum;
+    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
+    ControlarIndiceTab(pgcPrincipal, 0);
 
+    EstadoDoCadastro := ecNenhum;
+  end;
 end;
 
 procedure TfrmTelaHeranca.btnCancelarClick(Sender: TObject);
@@ -159,18 +186,11 @@ end;
 procedure TfrmTelaHeranca.btnGravarClick(Sender: TObject);
 begin
   Try
-    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
-    ControlarIndiceTab(pgcPrincipal, 0);
+    if Gravar(EstadoDoCadastro) then begin
+      ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
+      ControlarIndiceTab(pgcPrincipal, 0);
 
-    if (EstadoDoCadastro = ecInserir ) then
-        ShowMessage('Inserir')
-
-    else if (EstadoDoCadastro = ecAlterar) then
-        ShowMessage ('Alterado')
-
-    else
-        ShowMessage ('Nada aconteceu');
-
+    end;
   finally
     EstadoDoCadastro := ecNenhum;
   end;
