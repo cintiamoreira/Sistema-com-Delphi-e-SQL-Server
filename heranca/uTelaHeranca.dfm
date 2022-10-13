@@ -35,6 +35,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         Height = 370
         Align = alClient
         DataSource = dtsListagem
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -117,7 +118,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       OnClick = btnGravarClick
     end
     object btnFechar: TBitBtn
-      Left = 841
+      Left = 837
       Top = 6
       Width = 75
       Height = 25
@@ -125,7 +126,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Caption = '&Fechar'
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 837
+      ExplicitLeft = 833
     end
   end
   object pnlListagem: TPanel
@@ -135,20 +136,21 @@ object frmTelaHeranca: TfrmTelaHeranca
     Height = 87
     TabOrder = 2
     object lblIndice: TLabel
-      Left = 8
+      Left = 24
       Top = 12
       Width = 88
       Height = 15
       Caption = 'Campo Pesquisa'
     end
     object mskPesquisar: TMaskEdit
-      Left = 0
+      Left = 24
       Top = 33
-      Width = 514
+      Width = 490
       Height = 23
       TabOrder = 0
       Text = ''
       TextHint = 'Digite aqui'
+      OnChange = mskPesquisarChange
     end
     object btnPesquisar: TBitBtn
       Left = 528
@@ -157,6 +159,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 23
       Caption = '&Pesquisar'
       TabOrder = 1
+      Visible = False
     end
   end
   object QryListagem: TZQuery

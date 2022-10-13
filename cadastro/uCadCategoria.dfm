@@ -48,8 +48,8 @@ inherited frmCadCategoria: TfrmCadCategoria
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 821
-      ExplicitLeft = 817
+      Left = 817
+      ExplicitLeft = 813
     end
   end
   inherited pnlListagem: TPanel
