@@ -12,6 +12,8 @@ type
   TfrmCadCategoria = class(TfrmTelaHeranca)
     intgrfldQryListagemcategoriaId: TIntegerField;
     wdstrngfldQryListagemdescricao: TWideStringField;
+    edtCategoriaId: TLabeledEdit;
+    edtDescricao: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -29,9 +31,7 @@ implementation
 procedure TfrmCadCategoria.FormCreate(Sender: TObject);
 begin
   inherited;
-
   IndiceAtual := 'descricao';
-
 end;
 
 end.
