@@ -3,7 +3,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Informe aqui o t'#237'tulo'
-  ClientHeight = 441
+  ClientHeight = 658
   ClientWidth = 933
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,19 +20,19 @@ object frmTelaHeranca: TfrmTelaHeranca
     Left = 0
     Top = 0
     Width = 933
-    Height = 400
+    Height = 617
     ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 929
-    ExplicitHeight = 399
+    ExplicitHeight = 616
     object tabListagem: TTabSheet
       Caption = 'Listagem'
       object grdListagem: TDBGrid
         Left = 0
         Top = 0
         Width = 925
-        Height = 370
+        Height = 587
         Align = alClient
         DataSource = dtsListagem
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -54,12 +54,12 @@ object frmTelaHeranca: TfrmTelaHeranca
   end
   object pnlRodape: TPanel
     Left = 0
-    Top = 400
+    Top = 617
     Width = 933
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 399
+    ExplicitTop = 616
     ExplicitWidth = 929
     DesignSize = (
       933
@@ -119,7 +119,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       OnClick = btnGravarClick
     end
     object btnFechar: TBitBtn
-      Left = 833
+      Left = 829
       Top = 6
       Width = 75
       Height = 25
@@ -127,7 +127,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Caption = '&Fechar'
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 829
+      ExplicitLeft = 825
     end
   end
   object pnlListagem: TPanel
@@ -135,6 +135,7 @@ object frmTelaHeranca: TfrmTelaHeranca
     Top = 26
     Width = 917
     Height = 87
+    Align = alCustom
     TabOrder = 2
     object lblIndice: TLabel
       Left = 24
