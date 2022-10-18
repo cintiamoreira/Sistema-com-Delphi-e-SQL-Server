@@ -1,4 +1,4 @@
-unit uTelaHeranca;
+﻿unit uTelaHeranca;
 
 interface
 
@@ -310,11 +310,6 @@ end;
 procedure TfrmTelaHeranca.grdListagemDblClick(Sender: TObject);
 begin
   btnAlterar.Click;
-end;
-
-procedure TfrmTelaHeranca.grdListagemDblClick(Sender: TObject);
-begin
-  btnCancelarClick(btnCancelar);
 end;
 
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
