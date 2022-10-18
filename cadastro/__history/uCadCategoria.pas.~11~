@@ -33,7 +33,7 @@ implementation
 procedure TfrmCadCategoria.btnGravarClick(Sender: TObject);
 begin
   if (edtDescricao.Text = EmptyStr) then begin
-      ShowMessage('Campo Obrigatório');
+      ShowMessage('Campo Obrigatï¿½rio');
       edtDescricao.SetFocus;
       Abort;
   end;

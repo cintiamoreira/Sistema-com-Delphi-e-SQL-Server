@@ -32,7 +32,6 @@ procedure TfrmCadCategoria.FormCreate(Sender: TObject);
 begin
   inherited;
   IndiceAtual := 'descricao';
-
 end;
 
 end.

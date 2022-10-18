@@ -134,7 +134,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       OnClick = btnAlterarClick
     end
     object btnNavigator: TDBNavigator
-      Left = 536
+      Left = 504
       Top = 6
       Width = 224
       Height = 25

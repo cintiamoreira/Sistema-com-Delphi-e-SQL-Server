@@ -56,15 +56,8 @@ private
     Flag : Boolean);
 
   procedure ControlarIndiceTab (pgcPrincipal: TPageControl; indice: Integer);
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-
-    function RetornarCampoTraduzido (Campo: string): string;
-
-  procedure ExibirLabelIndice (Campo: string; aLabel: TLabel);
-========
     function RetornarCampoTraduzido(Campo: string): string;
     procedure ExibirLabelIndice(Campo: string; aLabel: TLabel);
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
     function ExisteCampoObrigatorio: Boolean;
     procedure DesabilitarEditPK;
 
@@ -87,9 +80,8 @@ implementation
 //Region serve para esconder um bloco de codigo dentro de uma region para separar
 
 {$REGION 'OBSERVAÇÕES'}
-
-//TAG: 1 - Chave Primária - PK
-//TAG: 2 - Campos Obrigatórios
+  //TAG: 1 - Chave Primária - PK
+  //TAG: 2 - Campos Obrigatórios
 {$ENDREGION}
 
 
@@ -99,18 +91,17 @@ implementation
 procedure TfrmTelaHeranca.ControlarBotoes
   (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
   Navegador : TDBNavigator;
-  pgcPrincipal : TPageControl;
+  pgcPrincipal: TPageControl;
   Flag : Boolean);
 
 begin
-  btnNovo.Enabled     := Flag;
-  btnApagar.Enabled   := Flag;
-  btnAlterar.Enabled  := Flag;
-
+  btnNovo.Enabled := Flag;
+  btnApagar.Enabled := Flag;
+  btnAlterar.Enabled := Flag;
   btnCancelar.Enabled := not (Flag);
-  btnGravar.Enabled   := not (Flag);
+  btnGravar.Enabled := not (Flag);
 
-  Navegador.Enabled   := Flag;
+  Navegador.Enabled := Flag;
   pgcPrincipal.Pages[0].TabVisible := Flag;
 end;
 
@@ -127,8 +118,8 @@ var i : Integer;
 
 begin
   for I := 0 to QryListagem.Fields.Count -1 do begin
-    if  LowerCase (QryListagem.Fields [i].FieldName) = LowerCase (Campo) then begin
-        Result := QryListagem.Fields [i].DisplayLabel;
+    if  LowerCase (QryListagem.Fields[i].FieldName) = LowerCase (Campo) then begin
+        Result := QryListagem.Fields[i].DisplayLabel;
         Break;
     end;
   end;
@@ -139,43 +130,6 @@ begin
   aLabel.Caption := RetornarCampoTraduzido(Campo);
 end;
 
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-function TfrmTelaHeranca.ExisteCampoObrigatorio : Boolean;
-var i: integer;
-begin
-  Result := False;
-  for I := 0 to ComponentCount -1 do
-  begin
-    if (Components [i] is TLabeledEdit) then
-    begin
-      if (TLabeledEdit (Components [i]).Tag = 2) and (TLabeledEdit (Components [i]).Text = EmptyStr) then
-      begin
-        MessageDlg(TLabeledEdit (Components [i]).EditLabel.Caption +
-                   'é um campo obrigatório', mtError, [mbok], 0);
-
-        Result := true;
-        Break;
-      end;
-    end;
-  end;
-end;
-
-
-procedure TfrmTelaHeranca.DesabilitarEditPK;
-var i:Integer;
-begin
-  for I := 0 to ComponentCount -1 do begin
-    if (Components [i] is TLabeledEdit) then begin
-      if (TLabeledEdit (Components [i]).Tag = 1) then begin
-          TLabeledEdit (Components [i]).Enabled := false;
-          Break;
-      end;
-    end;
-  end;
-
-end;
-
-========
 
  function TfrmTelaHeranca.ExisteCampoObrigatorio : Boolean;
  Var i:Integer;
@@ -197,33 +151,35 @@ end;
  end;
 
 procedure TfrmTelaHeranca.DesabilitarEditPK;
+Var i: Integer;
 begin
-
+  for i := 0 to ComponentCount -1 do begin
+    if (Components [i] is TLabeledEdit) then begin
+      if (TLabeledEdit (Components [i]).Tag = 1) then begin
+        TLabeledEdit (Components [i]).Enabled := false;
+        Break;
+      end;
+      end;
+  end;
 end;
 
 
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
 {$ENDREGION}
 
 
 {$REGION 'MÉTODOS VIRTUAIS'}
 function TfrmTelaHeranca.Excluir: Boolean;
 begin
-   ShowMessage ('DELETADO');
+   ShowMessage('DELETADO');
    Result := True;
 end;
 
 function TfrmTelaHeranca.Gravar(EstadoDoCadastro : TEstadoDoCadastro): Boolean;
 begin
   if (EstadoDoCadastro = ecInserir) then
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-      ShowMessage ('Inserir')
-========
    ShowMessage('Inserir')
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
    else if (EstadoDoCadastro = ecAlterar) then
-      ShowMessage ('Alterado');
-
+   ShowMessage('Alterado');
    Result := True;
 end;
 
@@ -231,8 +187,8 @@ end;
 
 procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
 begin
-   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                    btnNavigator, pgcPrincipal, false);
+   
+   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
    
    EstadoDoCadastro := ecInserir;
 
@@ -240,8 +196,7 @@ end;
 
 procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
 begin
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                  btnNavigator, pgcPrincipal, false);
+  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, false);
 
   EstadoDoCadastro := ecAlterar;
 
@@ -249,29 +204,18 @@ end;
 
 procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
 begin
-    Try
-    if (Excluir) then
-      begin
-      ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                      btnNavigator, pgcPrincipal, true);
-      ControlarIndiceTab(pgcPrincipal, 0);
-      end
-    else
-    begin
-      MessageDlg('Erro na Exclusão', mtError, [mbok], 0);
-  end;
+  if Excluir then begin
 
-  finally
-      EstadoDoCadastro := ecNenhum;
+    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
+    ControlarIndiceTab(pgcPrincipal, 0);
+
+    EstadoDoCadastro := ecNenhum;
   end;
 end;
 
-
-
 procedure TfrmTelaHeranca.btnCancelarClick(Sender: TObject);
 begin
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                  btnNavigator, pgcPrincipal, true);
+  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
   ControlarIndiceTab(pgcPrincipal, 0);
 
   EstadoDoCadastro := ecNenhum;
@@ -286,23 +230,6 @@ end;
 procedure TfrmTelaHeranca.btnGravarClick(Sender: TObject);
 begin
   if (ExisteCampoObrigatorio) then
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-      Abort;
-  Try
-    if Gravar (EstadoDoCadastro) then begin
-      ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                      btnNavigator, pgcPrincipal, true);
-
-      ControlarIndiceTab(pgcPrincipal, 0);
-      EstadoDoCadastro := ecNenhum;
-    end
-    else begin
-        MessageDlg('Erro na Gravação', mtError, [mbok], 0);
-    end;
-  Finally
-
-  End;
-========
   Abort;
 
 
@@ -315,7 +242,6 @@ begin
   finally
     EstadoDoCadastro := ecNenhum;
   end;
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
 end;
 
 procedure TfrmTelaHeranca.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -326,11 +252,6 @@ end;
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
 begin
   QryListagem.Connection := dtmConexao.ConexaoDB;
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                  btnNavigator, pgcPrincipal, true);
-========
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
   dtsListagem.DataSet := QryListagem;
   grdListagem.DataSource := dtsListagem;
   grdListagem.Options := [dgTitles,dgIndicator,dgColumnResize,dgColLines,
@@ -340,39 +261,34 @@ end;
 
 procedure TfrmTelaHeranca.FormShow(Sender: TObject);
 begin
-  if (QryListagem.SQL.Text <> EmptyStr) then
-  begin
+  if (QryListagem.SQL.Text <> EmptyStr) then begin
       QryListagem.IndexFieldNames := IndiceAtual;
-      ExibirLabelIndice (IndiceAtual, lblIndice);
+      ExibirLabelIndice(IndiceAtual, lblIndice);
       QryListagem.Open;
   end;
   
-<<<<<<<< HEAD:heranca/__history/uTelaHeranca.pas.~107~
-  ControlarIndiceTab (pgcPrincipal, 0);
+  ControlarIndiceTab(pgcPrincipal, 0);
   DesabilitarEditPK;
+  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
+  btnNavigator, pgcPrincipal, true);
+  
 end;
 
 procedure TfrmTelaHeranca.grdListagemDblClick(Sender: TObject);
 begin
-  btnAlterar.Click;
-========
-  ControlarIndiceTab(pgcPrincipal, 0);
-  ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
-  
->>>>>>>> cintia:heranca/__history/uTelaHeranca.pas.~80~
+  btnCancelarClick(btnCancelar);
 end;
 
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
 begin
   IndiceAtual := Column.FieldName;
   QryListagem.IndexFieldNames := IndiceAtual;
-  ExibirLabelIndice (IndiceAtual, lblIndice);
+  ExibirLabelIndice(IndiceAtual, lblIndice);   
 end;
                                    
 procedure TfrmTelaHeranca.mskPesquisarChange(Sender: TObject);
 begin
-  QryListagem.Locate(IndiceAtual, TMaskEdit (Sender).Text, [loPartialKey,
-                     loCaseInsensitive]);
+  QryListagem.Locate(IndiceAtual, TMaskEdit (Sender).Text, [loPartialKey, loCaseInsensitive]);
 end;
 
 end.

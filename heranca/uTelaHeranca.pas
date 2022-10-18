@@ -82,14 +82,14 @@ implementation
 
 //Region serve para esconder um bloco de codigo dentro de uma region para separar
 
-{$REGION 'OBSERVAÇÕES'}
+{$REGION 'OBSERVAï¿½ï¿½ES'}
 
-//TAG: 1 - Chave Primária - PK
-//TAG: 2 - Campos Obrigatórios
+//TAG: 1 - Chave Primï¿½ria - PK
+//TAG: 2 - Campos Obrigatï¿½rios
 {$ENDREGION}
 
 
-{$REGION 'FUNÇÕES E PROCEDURES'}
+{$REGION 'FUNï¿½ï¿½ES E PROCEDURES'}
 
 //Procedimento de Controle de Tela
 procedure TfrmTelaHeranca.ControlarBotoes
@@ -146,7 +146,7 @@ begin
       if (TLabeledEdit (Components [i]).Tag = 2) and (TLabeledEdit (Components [i]).Text = EmptyStr) then
       begin
         MessageDlg(TLabeledEdit (Components [i]).EditLabel.Caption +
-                   'é um campo obrigatório', mtError, [mbok], 0);
+                   'ï¿½ um campo obrigatï¿½rio', mtError, [mbok], 0);
 
         Result := true;
         Break;
@@ -185,7 +185,7 @@ end;
 {$ENDREGION}
 
 
-{$REGION 'MÉTODOS VIRTUAIS'}
+{$REGION 'Mï¿½TODOS VIRTUAIS'}
 function TfrmTelaHeranca.Excluir: Boolean;
 begin
    ShowMessage ('DELETADO');
@@ -233,11 +233,13 @@ begin
       end
     else
     begin
-      MessageDlg('Erro na Exclusão', mtError, [mbok], 0);
+      MessageDlg('Erro na Exclusï¿½o', mtError, [mbok], 0);
   end;
   finally
       EstadoDoCadastro := ecNenhum;
   end;
+
+
 end;
 
 procedure TfrmTelaHeranca.btnCancelarClick(Sender: TObject);
@@ -268,7 +270,7 @@ begin
       LimparEdits;
     end
     else begin
-        MessageDlg('Erro na Gravação', mtError, [mbok], 0);
+        MessageDlg('Erro na Gravaï¿½ï¿½o', mtError, [mbok], 0);
     end;
   Finally
 
@@ -308,6 +310,11 @@ end;
 procedure TfrmTelaHeranca.grdListagemDblClick(Sender: TObject);
 begin
   btnAlterar.Click;
+end;
+
+procedure TfrmTelaHeranca.grdListagemDblClick(Sender: TObject);
+begin
+  btnCancelarClick(btnCancelar);
 end;
 
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
