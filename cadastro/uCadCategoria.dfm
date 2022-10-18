@@ -2,23 +2,22 @@ inherited frmCadCategoria: TfrmCadCategoria
   Caption = 'Cadastro de Categorias'
   ClientHeight = 616
   ClientWidth = 917
-  ExplicitWidth = 929
-  ExplicitHeight = 654
+  ExplicitWidth = 923
+  ExplicitHeight = 645
+  PixelsPerInch = 96
   TextHeight = 15
   inherited pgcPrincipal: TPageControl
     Width = 917
     Height = 575
-    ExplicitWidth = 913
-    ExplicitHeight = 574
+    ActivePage = tabManutencao
+    ExplicitWidth = 917
+    ExplicitHeight = 575
     inherited tabListagem: TTabSheet
       ExplicitWidth = 909
       ExplicitHeight = 545
       inherited grdListagem: TDBGrid
-        Left = -3
-        Top = 88
-        Width = 1067
-        Height = 729
-        Align = alNone
+        Width = 909
+        Height = 458
         Columns = <
           item
             Expanded = False
@@ -39,8 +38,8 @@ inherited frmCadCategoria: TfrmCadCategoria
       ExplicitHeight = 545
       object edtCategoriaId: TLabeledEdit
         Tag = 1
-        Left = 20
-        Top = 120
+        Left = 72
+        Top = 152
         Width = 121
         Height = 23
         EditLabel.Width = 39
@@ -49,42 +48,37 @@ inherited frmCadCategoria: TfrmCadCategoria
         MaxLength = 10
         NumbersOnly = True
         TabOrder = 0
-        Text = ''
       end
       object edtDescricao: TLabeledEdit
         Tag = 2
-        Left = 20
-        Top = 184
-        Width = 537
+        Left = 72
+        Top = 224
+        Width = 465
         Height = 23
         EditLabel.Width = 51
         EditLabel.Height = 15
         EditLabel.Caption = 'Descri'#231#227'o'
         MaxLength = 30
         TabOrder = 1
-        Text = ''
       end
     end
   end
   inherited pnlRodape: TPanel
     Top = 575
     Width = 917
-    ExplicitTop = 574
-    ExplicitWidth = 913
-    DesignSize = (
-      917
-      41)
+    ExplicitTop = 575
+    ExplicitWidth = 917
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 797
-      ExplicitLeft = 793
+      Left = 809
+      ExplicitLeft = 809
     end
   end
   inherited pnlListagem: TPanel
-    Left = 0
-    ExplicitLeft = 0
+    Width = 917
+    ExplicitWidth = 917
   end
   inherited QryListagem: TZQuery
     SQL.Strings = (

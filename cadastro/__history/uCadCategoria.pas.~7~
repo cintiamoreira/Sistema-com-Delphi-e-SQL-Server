@@ -12,7 +12,9 @@ type
   TfrmCadCategoria = class(TfrmTelaHeranca)
     intgrfldQryListagemcategoriaId: TIntegerField;
     wdstrngfldQryListagemdescricao: TWideStringField;
-    lbledt1: TLabeledEdit;
+    edtCategoriaId: TLabeledEdit;
+    Label1: TLabel;
+    edtDescricao: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

@@ -13,6 +13,7 @@ type
     intgrfldQryListagemcategoriaId: TIntegerField;
     wdstrngfldQryListagemdescricao: TWideStringField;
     edtCategoriaId: TLabeledEdit;
+    Label1: TLabel;
     edtDescricao: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -32,17 +33,18 @@ implementation
 procedure TfrmCadCategoria.btnGravarClick(Sender: TObject);
 begin
   if (edtDescricao.Text = EmptyStr) then begin
-      ShowMessage ('Campo Obrigatório');
+      ShowMessage('Campo Obrigatï¿½rio');
       edtDescricao.SetFocus;
-      abort;
+      Abort;
   end;
+
   inherited;
+
 end;
 
 procedure TfrmCadCategoria.FormCreate(Sender: TObject);
 begin
   inherited;
-
   IndiceAtual := 'descricao';
 
 end;

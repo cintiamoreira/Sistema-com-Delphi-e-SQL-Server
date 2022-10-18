@@ -12,6 +12,12 @@ type
   TfrmCadCategoria = class(TfrmTelaHeranca)
     intgrfldQryListagemcategoriaId: TIntegerField;
     wdstrngfldQryListagemdescricao: TWideStringField;
+<<<<<<<< HEAD:cadastro/__history/uCadCategoria.pas.~14~
+    edtCategoriaId: TLabeledEdit;
+    edtDescricao: TLabeledEdit;
+========
+>>>>>>>> cintia:cadastro/__history/uCadCategoria.pas.~6~
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,5 +30,16 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmCadCategoria.FormCreate(Sender: TObject);
+begin
+  inherited;
+<<<<<<<< HEAD:cadastro/__history/uCadCategoria.pas.~14~
+========
+
+>>>>>>>> cintia:cadastro/__history/uCadCategoria.pas.~6~
+  IndiceAtual := 'descricao';
+
+end;
 
 end.
