@@ -46,10 +46,7 @@ type
 private
     { Private declarations }
 
-  EstadoDoCadastro : TEstadoDoCadastro;
-
-  procedure
-    ControlarBotoes
+  procedure ControlarBotoes
     (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
     Navegador : TDBNavigator;
     pgcPrincipal: TPageControl;
@@ -60,15 +57,18 @@ private
     function RetornarCampoTraduzido (Campo: string): string;
 
   procedure ExibirLabelIndice (Campo: string; aLabel: TLabel);
+
     function ExisteCampoObrigatorio: Boolean;
-    procedure DesabilitarEditPK;
-    procedure LimparEdits;
+
+  procedure DesabilitarEditPK;
+  procedure LimparEdits;
 
 public
     { Public declarations }
 
     IndiceAtual : string;
-    function Excluir : Boolean; virtual;
+    EstadoDoCadastro : TEstadoDoCadastro;
+    function Apagar : Boolean; virtual;
     function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; virtual;
 
   end;
@@ -82,14 +82,14 @@ implementation
 
 //Region serve para esconder um bloco de codigo dentro de uma region para separar
 
-{$REGION 'OBSERVA��ES'}
+{$REGION 'OBSERVAÇÕES'}
 
 //TAG: 1 - Chave Prim�ria - PK
 //TAG: 2 - Campos Obrigat�rios
 {$ENDREGION}
 
 
-{$REGION 'FUN��ES E PROCEDURES'}
+{$REGION 'FUNÇÕES E PROCEDURES'}
 
 //Procedimento de Controle de Tela
 procedure TfrmTelaHeranca.ControlarBotoes
@@ -120,10 +120,10 @@ end;
 
 function TfrmTelaHeranca.RetornarCampoTraduzido (Campo : string) : string;
 var i : Integer;
-
 begin
   for I := 0 to QryListagem.Fields.Count -1 do begin
-    if  LowerCase (QryListagem.Fields [i].FieldName) = LowerCase (Campo) then begin
+    if  LowerCase (QryListagem.Fields [i].FieldName) = LowerCase (Campo) then
+    begin
         Result := QryListagem.Fields [i].DisplayLabel;
         Break;
     end;
@@ -146,7 +146,7 @@ begin
       if (TLabeledEdit (Components [i]).Tag = 2) and (TLabeledEdit (Components [i]).Text = EmptyStr) then
       begin
         MessageDlg(TLabeledEdit (Components [i]).EditLabel.Caption +
-                   '� um campo obrigat�rio', mtError, [mbok], 0);
+                   ' é um campo obrigatório', mtError, [mbok], 0);
 
         Result := true;
         Break;
@@ -167,7 +167,6 @@ begin
       end;
     end;
   end;
-
 end;
 
 procedure TfrmTelaHeranca.LimparEdits;
@@ -185,8 +184,8 @@ end;
 {$ENDREGION}
 
 
-{$REGION 'M�TODOS VIRTUAIS'}
-function TfrmTelaHeranca.Excluir: Boolean;
+{$REGION 'MÉTODOS VIRTUAIS'}
+function TfrmTelaHeranca.Apagar: Boolean;
 begin
    ShowMessage ('DELETADO');
    Result := True;
@@ -207,7 +206,7 @@ end;
 procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
 begin
    ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
-                    btnNavigator, pgcPrincipal, false);
+                   btnNavigator, pgcPrincipal, false);
    
    EstadoDoCadastro := ecInserir;
    LimparEdits;
@@ -224,7 +223,7 @@ end;
 procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
 begin
   Try
-    if (Excluir) then
+    if (Apagar) then
       begin
       ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
                       btnNavigator, pgcPrincipal, true);
@@ -233,7 +232,7 @@ begin
       end
     else
     begin
-      MessageDlg('Erro na Exclus�o', mtError, [mbok], 0);
+      MessageDlg('Erro na Exclusão', mtError, [mbok], 0);
   end;
   finally
       EstadoDoCadastro := ecNenhum;
@@ -261,7 +260,9 @@ begin
   if (ExisteCampoObrigatorio) then
       Abort;
   Try
-    if Gravar (EstadoDoCadastro) then begin
+  //Método Virtual
+    if Gravar (EstadoDoCadastro) then
+    begin
       ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
                       btnNavigator, pgcPrincipal, true);
 
@@ -269,9 +270,13 @@ begin
       EstadoDoCadastro := ecNenhum;
       LimparEdits;
     end
-    else begin
-        MessageDlg('Erro na Grava��o', mtError, [mbok], 0);
+
+    else
+
+    begin
+        MessageDlg('Erro na Gravação', mtError, [mbok], 0);
     end;
+
   Finally
 
   End;
@@ -284,7 +289,7 @@ end;
 
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
 begin
-  QryListagem.Connection := dtmConexao.ConexaoDB;
+  QryListagem.Connection := dtmPrincipal.ConexaoDB;
   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar,
                   btnNavigator, pgcPrincipal, true);
   dtsListagem.DataSet := QryListagem;

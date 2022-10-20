@@ -1,9 +1,9 @@
-object dtmConexao: TdtmConexao
+object dtmPrincipal: TdtmPrincipal
+  OldCreateOrder = True
   Height = 480
   Width = 640
   object ConexaoDB: TZConnection
     ControlsCodePage = cCP_UTF16
-    AutoEncodeStrings = True
     Catalog = ''
     Properties.Strings = (
       'controls_cp=CP_UTF16'
