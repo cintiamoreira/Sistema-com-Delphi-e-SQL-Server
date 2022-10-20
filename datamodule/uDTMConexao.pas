@@ -6,21 +6,22 @@ uses
   System.SysUtils, System.Classes, ZAbstractConnection, ZConnection;
 
 type
-  TdtmConexao = class(TDataModule)
+  TdtmPrincipal = class(TDataModule)
     ConexaoDB: TZConnection;
+
   private
     { Private declarations }
   public
+
     { Public declarations }
   end;
 
 var
-  dtmConexao: TdtmConexao;
+  dtmPrincipal: TdtmPrincipal;
 
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
-
 end.

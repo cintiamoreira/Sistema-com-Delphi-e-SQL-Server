@@ -3,8 +3,9 @@ unit UPrincipal;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDTMConexao, Enter;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.Menus, uDTMConexao, Enter;
 
 type
   TfrmPrincipal = class(TForm)
@@ -56,7 +57,7 @@ end;
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FreeAndNil(TeclaEnter);
-  FreeAndNil(dtmConexao);
+  FreeAndNil(dtmPrincipal);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -76,8 +77,8 @@ begin
 
    }
 
-   dtmConexao :=  TdtmConexao.Create(Self);
-   with dtmConexao.ConexaoDB do
+   dtmPrincipal := TdtmPrincipal.Create(Self);
+   with dtmPrincipal.ConexaoDB do
    begin
      SQLHourGlass := True;
      Protocol := 'mssql';
