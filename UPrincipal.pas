@@ -29,6 +29,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Categoria1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Cliente1Click(Sender: TObject);
+    procedure Produto1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -45,13 +47,20 @@ implementation
 
 {$R *.dfm}
 
-uses uCadCategoria;
+uses uCadCategoria, uCadCliente, uCadProduto;
 
 procedure TfrmPrincipal.Categoria1Click(Sender: TObject);
 begin
   frmCadCategoria := TfrmCadCategoria.Create(Self);
   frmCadCategoria.ShowModal;
   frmCadCategoria.Release;
+end;
+
+procedure TfrmPrincipal.Cliente1Click(Sender: TObject);
+begin
+  frmCadCliente := TfrmCadCliente.Create (Self);
+  frmCadCliente.ShowModal;
+  frmCadCliente.Release;
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -103,6 +112,13 @@ begin
    Close;
    //ou
    //Application.Terminate;
+end;
+
+procedure TfrmPrincipal.Produto1Click(Sender: TObject);
+begin
+  frmCadProduto := TfrmCadProduto.Create (Self);
+  frmCadProduto.ShowModal;
+  frmCadProduto.Release;
 end;
 
 end.
