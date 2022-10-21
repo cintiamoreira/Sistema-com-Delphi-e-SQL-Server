@@ -20,6 +20,8 @@ procedure FormCreate(Sender: TObject);
 
 procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
+procedure btnAlterarClick(Sender: TObject);
+
   private
     { Private declarations }
 
@@ -41,19 +43,46 @@ implementation
 {$REGION 'OVERRIDE'}
 function TfrmCadCategoria.Apagar: Boolean;
 begin
+  if oCategoria.Selecionar (QryListagem.FieldByName('categoriaId').AsInteger) then begin
   Result := oCategoria.Apagar;
+  end;
 end;
 
 function TfrmCadCategoria.Gravar(EstadoDoCadastro: TEstadoDoCadastro): Boolean;
 begin
-   if (EstadoDoCadastro = ecInserir) then
-       Result := oCategoria.Gravar
+  if edtCategoriaId.Text <> EmptyStr then
+     oCategoria.codigo := StrToInt(edtCategoriaId.Text)
+  else
+     oCategoria.codigo :=0;
+
+  oCategoria.descricao := edtDescricao.Text;
+
+  if (EstadoDoCadastro = ecInserir) then
+       Result := oCategoria.Inserir
 
    else if (EstadoDoCadastro = ecAlterar) then
             Result := oCategoria.Atualizar;
 end;
 {$ENDREGION}
 
+
+procedure TfrmCadCategoria.btnAlterarClick(Sender: TObject);
+begin
+  if oCategoria.Selecionar (QryListagem.FieldByName('categoriaId').AsInteger) then
+
+    begin
+     edtCategoriaId.Text := IntToStr (oCategoria.codigo);
+     edtDescricao.Text := oCategoria.descricao;
+    end
+
+  else begin
+    btnCancelar.Click;
+    Abort;
+  end;
+
+  inherited;
+
+end;
 
 procedure TfrmCadCategoria.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
