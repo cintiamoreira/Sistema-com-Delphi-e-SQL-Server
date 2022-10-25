@@ -42,34 +42,40 @@ type
     procedure grdListagemTitleClick(Column: TColumn);
     procedure mskPesquisarChange(Sender: TObject);
     procedure grdListagemDblClick(Sender: TObject);
+    procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
 private
     { Private declarations }
 
   procedure ControlarBotoes
-    (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
-    Navegador : TDBNavigator;
-    pgcPrincipal: TPageControl;
-    Flag : Boolean);
+            (btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar: TBitBtn;
+            Navegador : TDBNavigator;
+            pgcPrincipal: TPageControl;
+            Flag : Boolean);
 
   procedure ControlarIndiceTab (pgcPrincipal: TPageControl; indice: Integer);
 
-    function RetornarCampoTraduzido (Campo: string): string;
+  function RetornarCampoTraduzido (Campo: string): string;
 
   procedure ExibirLabelIndice (Campo: string; aLabel: TLabel);
 
-    function ExisteCampoObrigatorio: Boolean;
+  function ExisteCampoObrigatorio: Boolean;
 
   procedure DesabilitarEditPK;
+
   procedure LimparEdits;
+
 
 public
     { Public declarations }
 
-    IndiceAtual : string;
-    EstadoDoCadastro : TEstadoDoCadastro;
-    function Apagar : Boolean; virtual;
-    function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; virtual;
+  IndiceAtual : string;
+  EstadoDoCadastro : TEstadoDoCadastro;
+
+  function Apagar : Boolean; virtual;
+  function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; virtual;
+  procedure BloqueiaCTRL_DEL_DBGrid(var Key: Word; Shift: TShiftState);
 
   end;
 
@@ -340,6 +346,12 @@ begin
   btnAlterar.Click;
 end;
 
+procedure TfrmTelaHeranca.grdListagemKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  BloqueiaCTRL_DEL_DBGrid(Key, Shift);
+end;
+
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
 begin
   IndiceAtual := Column.FieldName;
@@ -352,4 +364,13 @@ begin
   QryListagem.Locate(IndiceAtual, TMaskEdit (Sender).Text, [loPartialKey,
                      loCaseInsensitive]);
 end;
+
+procedure TfrmTelaHeranca.BloqueiaCTRL_DEL_DBGrid
+          (var Key: Word; Shift: TShiftState);
+begin
+  //Bloqueia o CTRL + DEL
+  if (Shift = [ssCtrl]) and (Key = 46) then
+      Key := 0;
+end;
+
 end.

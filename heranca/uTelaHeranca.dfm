@@ -43,6 +43,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
         OnDblClick = grdListagemDblClick
+        OnKeyDown = grdListagemKeyDown
         OnTitleClick = grdListagemTitleClick
       end
       object pnlListagem: TPanel
