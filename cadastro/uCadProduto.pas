@@ -21,7 +21,6 @@ type
     QryListagemDescricaoCategoria: TWideStringField;
     edtProdutoId: TLabeledEdit;
     edtNome: TLabeledEdit;
-    edtDescricao: TMemo;
     lblDescricao: TLabel;
     edtValor: TCurrencyEdit;
     edtQuantidade: TCurrencyEdit;
@@ -33,6 +32,7 @@ type
     intgrfldQryCategoriacategoriaId: TIntegerField;
     wdstrngfldQryCategoriadescricao: TWideStringField;
     lbl1: TLabel;
+    edtDescricao: TMemo;
 
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
