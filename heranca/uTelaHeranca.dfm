@@ -5,7 +5,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   Caption = 'Informe aqui o t'#237'tulo'
   ClientHeight = 586
   ClientWidth = 893
-  Color = clBtnFace
+  Color = 16442595
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -51,6 +51,8 @@ object frmTelaHeranca: TfrmTelaHeranca
         Top = 0
         Width = 929
         Height = 73
+        Color = 16442595
+        ParentBackground = False
         TabOrder = 1
         object lblIndice: TLabel
           Left = 24

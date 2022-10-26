@@ -2,16 +2,16 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2022/09/16 11:26:13.000.910,=C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas</Transaction>
-    <Transaction>2022/09/16 11:28:58.000.335,C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Inicial.pas</Transaction>
     <Transaction>2022/09/16 11:28:58.000.335,C:\Users\cinti\Desktop\Projetos Delphi\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Inicial.dfm</Transaction>
+    <Transaction>2022/09/16 11:28:58.000.335,C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Inicial.pas</Transaction>
     <Transaction>2022/09/16 11:32:05.000.049,C:\Users\cinti\Desktop\Projetos Delphi\Project1.dproj=C:\Users\cinti\Desktop\Projetos Delphi\Project1.dproj</Transaction>
     <Transaction>2022/09/20 14:24:47.000.317,=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
     <Transaction>2022/09/20 14:26:37.000.881,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.dfm</Transaction>
     <Transaction>2022/09/20 14:26:37.000.881,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
     <Transaction>2022/09/20 14:58:31.000.293,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas=</Transaction>
     <Transaction>2022/09/20 14:59:49.000.847,=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
-    <Transaction>2022/09/20 15:01:32.000.283,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
     <Transaction>2022/09/20 15:01:32.000.283,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.dfm</Transaction>
+    <Transaction>2022/09/20 15:01:32.000.283,C:\Users\cinti\Desktop\Projetos Delphi\TELA2.pas=C:\Users\cinti\Desktop\Projetos Delphi\Unit2.pas</Transaction>
     <Transaction>2022/09/20 16:00:12.000.438,=C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas</Transaction>
     <Transaction>2022/09/20 16:30:04.000.850,=C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas</Transaction>
     <Transaction>2022/09/22 15:20:12.000.279,=C:\Users\cinti\Desktop\Projetos Delphi\Unit1.pas</Transaction>
@@ -29,8 +29,8 @@
     <Transaction>2022/10/05 16:28:37.000.876,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uDTMConexao.dfm</Transaction>
     <Transaction>2022/10/06 14:58:37.000.156,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\heranca\uTelaHeranca.pas</Transaction>
     <Transaction>2022/10/06 16:37:09.000.456,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/06 16:41:03.000.944,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.pas</Transaction>
     <Transaction>2022/10/06 16:41:03.000.945,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.dfm</Transaction>
+    <Transaction>2022/10/06 16:41:03.000.944,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadCategoria.pas</Transaction>
     <Transaction>2022/10/08 16:59:54.000.213,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\terceiros\Enter.pas</Transaction>
     <Transaction>2022/10/09 11:58:39.000.912,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/09 11:59:06.000.499,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\heranca\uEnum.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
@@ -43,26 +43,28 @@
     <Transaction>2022/10/21 11:30:54.000.013,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/21 11:31:23.000.029,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\classes\cCadCliente.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/21 14:33:06.000.571,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/21 14:34:27.000.019,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadProduto.dfm</Transaction>
     <Transaction>2022/10/21 14:34:27.000.019,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadProduto.pas</Transaction>
+    <Transaction>2022/10/21 14:34:27.000.019,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\cadastro\uCadProduto.dfm</Transaction>
     <Transaction>2022/10/21 15:50:01.000.973,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/21 15:50:28.000.553,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\classes\cCadProduto.pas</Transaction>
     <Transaction>2022/10/24 15:15:20.000.198,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/24 15:15:53.000.617,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uFrmAtualizaDB.dfm</Transaction>
     <Transaction>2022/10/24 15:15:53.000.617,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uFrmAtualizaDB.pas</Transaction>
+    <Transaction>2022/10/24 15:15:53.000.617,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uFrmAtualizaDB.dfm</Transaction>
     <Transaction>2022/10/24 16:37:25.000.457,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/24 16:37:45.000.709,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uDTMVenda.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm</Transaction>
     <Transaction>2022/10/24 16:37:45.000.709,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\datamodule\uDTMVenda.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/24 17:23:36.000.628,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/24 17:24:27.000.314,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.dfm</Transaction>
     <Transaction>2022/10/24 17:24:27.000.314,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
-    <Transaction>2022/10/25 11:06:41.000.585,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVendas.dfm</Transaction>
     <Transaction>2022/10/25 11:06:41.000.585,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVendas.pas</Transaction>
+    <Transaction>2022/10/25 11:06:41.000.585,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVendas.dfm</Transaction>
     <Transaction>2022/10/25 11:09:03.000.604,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVendas.dfm=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.dfm</Transaction>
     <Transaction>2022/10/25 11:09:03.000.604,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVendas.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\processo\uProVenda.pas</Transaction>
     <Transaction>2022/10/25 15:12:20.000.968,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
     <Transaction>2022/10/25 15:14:03.000.220,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\classes\cProVenda.pas</Transaction>
     <Transaction>2022/10/25 16:35:42.000.663,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
+    <Transaction>2022/10/26 14:39:32.836,=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
+    <Transaction>2022/10/26 14:41:15.744,C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\classes\cControleEstoque.pas=C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="cadastro"/>
@@ -77,6 +79,7 @@
     <File Path="classes\cCadCliente.pas"/>
     <File Path="classes\cCadProduto.pas"/>
     <File Path="classes\cProVenda.pas"/>
+    <File Path="classes\cControleEstoque.pas"/>
     <File Path="datamodule"/>
     <File Path="datamodule\uDTMConexao.pas"/>
     <File Path="datamodule\uDTMConexao.dfm"/>

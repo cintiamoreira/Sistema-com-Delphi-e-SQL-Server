@@ -9,7 +9,6 @@ inherited frmCadCategoria: TfrmCadCategoria
   inherited pgcPrincipal: TPageControl
     Width = 917
     Height = 575
-    ActivePage = tabManutencao
     ExplicitWidth = 917
     ExplicitHeight = 575
     inherited tabListagem: TTabSheet
@@ -66,6 +65,8 @@ inherited frmCadCategoria: TfrmCadCategoria
   inherited pnlRodape: TPanel
     Top = 575
     Width = 917
+    Color = 16442595
+    ParentBackground = False
     ExplicitTop = 575
     ExplicitWidth = 917
     inherited btnNavigator: TDBNavigator
