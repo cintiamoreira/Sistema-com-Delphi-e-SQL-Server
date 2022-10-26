@@ -14,9 +14,10 @@ uses
   uCadProduto in 'cadastro\uCadProduto.pas' {frmCadProduto},
   cCadProduto in 'classes\cCadProduto.pas',
   uFrmAtualizaDB in 'datamodule\uFrmAtualizaDB.pas' {frmAtualizaDB},
-  uDTMVenda in 'datamodule\uDTMVenda.pas' {dtmVenda: TDataModule},
+  uDTMVenda in 'datamodule\uDTMVenda.pas' {dtmVendas: TDataModule},
   uProVenda in 'processo\uProVenda.pas' {frmProVenda},
-  cProVenda in 'classes\cProVenda.pas';
+  cProVenda in 'classes\cProVenda.pas',
+  cControleEstoque in 'classes\cControleEstoque.pas';
 
 {$R *.res}
 

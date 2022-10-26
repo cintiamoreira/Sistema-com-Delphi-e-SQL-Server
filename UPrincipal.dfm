@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   Caption = 'Menu Principal'
   ClientHeight = 587
   ClientWidth = 867
-  Color = clBtnFace
+  Color = 16442595
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12

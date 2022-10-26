@@ -1,21 +1,21 @@
 inherited frmProVenda: TfrmProVenda
   Caption = 'Vendas'
   ClientHeight = 611
-  ClientWidth = 1017
-  ExplicitWidth = 1023
+  ClientWidth = 913
+  ExplicitWidth = 919
   ExplicitHeight = 640
   PixelsPerInch = 96
   TextHeight = 15
   inherited pgcPrincipal: TPageControl
-    Width = 1017
+    Width = 913
     Height = 570
-    ActivePage = tabManutencao
     ExplicitWidth = 1017
     ExplicitHeight = 570
     inherited tabListagem: TTabSheet
-      ExplicitWidth = 1009
+      ExplicitWidth = 905
       ExplicitHeight = 540
       inherited grdListagem: TDBGrid
+        Width = 1006
         Columns = <
           item
             Expanded = False
@@ -48,7 +48,7 @@ inherited frmProVenda: TfrmProVenda
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitWidth = 1009
+      ExplicitWidth = 905
       ExplicitHeight = 540
       object lbl1: TLabel
         Left = 188
@@ -84,7 +84,7 @@ inherited frmProVenda: TfrmProVenda
         Height = 23
         KeyField = 'clienteId'
         ListField = 'nome'
-        ListSource = dtmVenda.dtsCliente
+        ListSource = dtmVendas.dtsCliente
         TabOrder = 1
       end
       object edtDataVenda: TDateEdit
@@ -101,17 +101,19 @@ inherited frmProVenda: TfrmProVenda
       object pnl1: TPanel
         Left = 0
         Top = 129
-        Width = 1009
+        Width = 905
         Height = 411
         Align = alBottom
         TabOrder = 3
+        ExplicitWidth = 1009
         object pnl2: TPanel
           Left = 1
           Top = 1
-          Width = 1007
+          Width = 903
           Height = 72
           Align = alTop
           TabOrder = 0
+          ExplicitWidth = 1007
           object Label1: TLabel
             Left = 1
             Top = 6
@@ -147,8 +149,9 @@ inherited frmProVenda: TfrmProVenda
             Height = 23
             KeyField = 'produtoId'
             ListField = 'nome'
-            ListSource = dtmVenda.dtsProdutos
+            ListSource = dtmVendas.dtsProdutos
             TabOrder = 0
+            OnExit = lkpProdutoExit
             OnKeyDown = lkpProdutoKeyDown
           end
           object edtValorUnitario: TCurrencyEdit
@@ -166,6 +169,8 @@ inherited frmProVenda: TfrmProVenda
             Height = 23
             DisplayFormat = ' ,0.00;- ,0.00'
             TabOrder = 2
+            OnEnter = edtQuantidadeEnter
+            OnExit = edtQuantidadeExit
           end
           object edtTotalProduto: TCurrencyEdit
             Left = 656
@@ -178,7 +183,7 @@ inherited frmProVenda: TfrmProVenda
             ReadOnly = True
             TabOrder = 3
           end
-          object BitBtn1: TBitBtn
+          object btnAdicionarItem: TBitBtn
             Left = 795
             Top = 24
             Width = 99
@@ -212,9 +217,9 @@ inherited frmProVenda: TfrmProVenda
               17BF6F17FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
               00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
             TabOrder = 4
-            OnClick = btnNovoClick
+            OnClick = btnAdicionarItemClick
           end
-          object BitBtn2: TBitBtn
+          object btnApagarItem: TBitBtn
             Left = 900
             Top = 25
             Width = 99
@@ -249,22 +254,24 @@ inherited frmProVenda: TfrmProVenda
               00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
             TabOrder = 5
             TabStop = False
+            OnClick = btnApagarItemClick
           end
         end
         object pnl3: TPanel
           Left = 1
           Top = 73
-          Width = 1007
+          Width = 903
           Height = 279
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1007
           object dbGridItensVenda: TDBGrid
             Left = 1
             Top = 1
-            Width = 1005
+            Width = 901
             Height = 277
             Align = alClient
-            DataSource = dtmVenda.dtsItensVenda
+            DataSource = dtmVendas.dtsItensVenda
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit]
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -272,6 +279,7 @@ inherited frmProVenda: TfrmProVenda
             TitleFont.Height = -12
             TitleFont.Name = 'Segoe UI'
             TitleFont.Style = []
+            OnDblClick = dbGridItensVendaDblClick
             Columns = <
               item
                 Expanded = False
@@ -307,10 +315,11 @@ inherited frmProVenda: TfrmProVenda
         object pnl4: TPanel
           Left = 1
           Top = 352
-          Width = 1007
+          Width = 903
           Height = 58
           Align = alBottom
           TabOrder = 2
+          ExplicitWidth = 1007
           object lblValor: TLabel
             Left = 727
             Top = 22
@@ -345,14 +354,14 @@ inherited frmProVenda: TfrmProVenda
   end
   inherited pnlRodape: TPanel
     Top = 570
-    Width = 1017
+    Width = 913
     ExplicitTop = 570
     ExplicitWidth = 1017
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 929
+      Left = 825
       ExplicitLeft = 929
     end
   end
