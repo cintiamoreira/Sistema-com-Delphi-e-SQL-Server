@@ -81,6 +81,9 @@ var
 
 implementation
 
+uses
+  uRelProVenda;
+
 {$R *.dfm}
 
 {$region 'Override'}
@@ -103,9 +106,23 @@ begin
   oVenda.TotalVenda       :=edtValorTotal.Value;
 
   if (EstadoDoCadastro=ecInserir) then
-      Result := oVenda.Inserir(dtmVendas.cdsItensVenda)
+      oVenda.VendaId := oVenda.Inserir(dtmVendas.cdsItensVenda)
   else if (EstadoDoCadastro=ecAlterar) then
-           Result := oVenda.Atualizar (dtmVendas.cdsItensVenda);
+           oVenda.Atualizar (dtmVendas.cdsItensVenda);
+
+  frmRelProVenda:=TfrmRelProVenda.Create(self);
+  frmRelProVenda.QryVendas.Close;
+  frmRelProVenda.QryVendas.ParamByName('VendaId').AsInteger:= oVenda.VendaId;
+  frmRelProVenda.QryVendas.Open;
+
+  frmRelProVenda.QryVendasItens.Close;
+  frmRelProVenda.QryVendasItens.ParamByName('VendaId').AsInteger:= oVenda.VendaId;
+  frmRelProVenda.QryVendasItens.Open;
+
+  frmRelProVenda.Relatorio.PreviewModal;
+  frmRelProVenda.Release;
+
+  Result :=true;
 end;
 
 procedure TfrmProVenda.lkpProdutoExit(Sender: TObject);

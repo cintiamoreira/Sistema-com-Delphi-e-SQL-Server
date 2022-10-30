@@ -17,7 +17,15 @@ uses
   uDTMVenda in 'datamodule\uDTMVenda.pas' {dtmVendas: TDataModule},
   uProVenda in 'processo\uProVenda.pas' {frmProVenda},
   cProVenda in 'classes\cProVenda.pas',
-  cControleEstoque in 'classes\cControleEstoque.pas';
+  cControleEstoque in 'classes\cControleEstoque.pas',
+  uRelCadClienteFicha in 'relatorio\uRelCadClienteFicha.pas' {frmRelCadClienteFicha},
+  uRelProVenda in 'relatorio\uRelProVenda.pas' {frmRelProVenda},
+  uRelCadCliente in 'relatorio\uRelCadCliente.pas' {frmRelCadCliente},
+  uRelCategoria in 'relatorio\uRelCategoria.pas' {frmRelCategoria},
+  uRelCadProduto in 'relatorio\uRelCadProduto.pas' {frmRelCadProduto},
+  uSelecionarData in 'relatorio\uSelecionarData.pas' {frmSelecionarData},
+  uRelCadProdutoComGrupoCategoria in 'relatorio\uRelCadProdutoComGrupoCategoria.pas' {frmRelCadProdutoComGrupoCategoria},
+  uRelVendaPorData in 'relatorio\uRelVendaPorData.pas' {frmRelProVendaPorData};
 
 {$R *.res}
 

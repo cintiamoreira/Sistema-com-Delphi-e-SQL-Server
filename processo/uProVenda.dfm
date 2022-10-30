@@ -9,7 +9,7 @@ inherited frmProVenda: TfrmProVenda
   inherited pgcPrincipal: TPageControl
     Width = 913
     Height = 570
-    ExplicitWidth = 1017
+    ExplicitWidth = 913
     ExplicitHeight = 570
     inherited tabListagem: TTabSheet
       ExplicitWidth = 905
@@ -356,13 +356,13 @@ inherited frmProVenda: TfrmProVenda
     Top = 570
     Width = 913
     ExplicitTop = 570
-    ExplicitWidth = 1017
+    ExplicitWidth = 913
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
       Left = 825
-      ExplicitLeft = 929
+      ExplicitLeft = 825
     end
   end
   inherited QryListagem: TZQuery

@@ -36,7 +36,7 @@ type
   public
     constructor Create (aConexao : TZConnection);
     destructor Destroy; override;
-    function Inserir (cds : TClientDataSet): Boolean;
+    function Inserir (cds : TClientDataSet): Integer;
     function Atualizar(cds:TClientDataSet):Boolean;
     function Apagar : Boolean;
     function InserirItens(cds: TClientDataSet; IdVenda: Integer): Boolean;
@@ -302,12 +302,11 @@ begin
 end;
 
 
-function TVenda.Inserir(cds : TClientDataSet) : Boolean;
+function TVenda.Inserir(cds : TClientDataSet) : Integer;
 var Qry:TZQuery;
     IdVendaGerado:Integer;
 begin
   try
-    Result := True;
     ConexaoDB.StartTransaction;
     Qry:=TZQuery.Create(nil);
     Qry.Connection:=ConexaoDB;
@@ -339,9 +338,10 @@ begin
       {$ENDREGION}
 
       ConexaoDB.Commit;
+      Result :=IdVendaGerado;
     Except
       ConexaoDB.Rollback;
-      Result:=false;
+      Result:=-1;
     End;
 
   finally
