@@ -3,46 +3,42 @@ unit uCadCliente;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  uTelaHeranca, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ComCtrls, RxToolEdit, cCadCliente, UEnum;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, Data.DB,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.DBCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
+  uEnum, cCadCliente, RxToolEdit;
 
 type
   TfrmCadCliente = class(TfrmTelaHeranca)
-    edtClienteId: TLabeledEdit;
-    edtNome: TLabeledEdit;
-    edtCEP: TMaskEdit;
-    lblCEP: TLabel;
-    edtEndereco: TLabeledEdit;
-    edtBairro: TLabeledEdit;
-    edtCidade: TLabeledEdit;
-    edtTelefone: TMaskEdit;
-    lblTelefone: TLabel;
-    edtEmail: TLabeledEdit;
-    edtDataNascimento: TDateEdit;
-    lblData: TLabel;
+
     QryListagemclienteId: TIntegerField;
     QryListagemnome: TWideStringField;
     QryListagemendereco: TWideStringField;
     QryListagemcep: TWideStringField;
-    procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure btnNovoClick(Sender: TObject);
+    edtNome: TLabeledEdit;
+    edtEndereco: TLabeledEdit;
+    edtCidade: TLabeledEdit;
+    edtBairro: TLabeledEdit;
+    edtEmail: TLabeledEdit;
+    edtCEP: TMaskEdit;
+    edtTelefone: TMaskEdit;
+    edtDataNascimento: TDateEdit;
+    edtClienteId: TLabeledEdit;
+
     procedure btnAlterarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
 
   private
     { Private declarations }
-
-    oCliente : TCliente;
-    function Apagar : Boolean; override;
-    function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; override;
-
+    oCliente:TCliente;
+    function Apagar:Boolean; override;
+    function Gravar(EstadoDoCadastro:TEstadoDoCadastro):Boolean; override;
   public
     { Public declarations }
   end;
-
 var
   frmCadCliente: TfrmCadCliente;
 
@@ -64,13 +60,12 @@ begin
      end;
 end;
 
-function TfrmCadCliente.Gravar(EstadoDoCadastro: TEstadoDoCadastro) : Boolean;
+function TfrmCadCliente.Gravar(EstadoDoCadastro: TEstadoDoCadastro): Boolean;
 begin
   if edtClienteId.Text<>EmptyStr then
-     oCliente.codigo := StrToInt(edtClienteId.Text)
+     oCliente.codigo:=StrToInt(edtClienteId.Text)
   else
      oCliente.codigo:=0;
-
   oCliente.nome           :=edtNome.Text;
   oCliente.cep            :=edtCEP.Text;
   oCliente.endereco       :=edtEndereco.Text;

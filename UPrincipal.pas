@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.Menus, uDTMConexao, Enter, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  uFrmAtualizaDB;
+  uFrmAtualizaDB, uCadUsuario, cUsuarioLogado, Vcl.ComCtrls;
 
 type
   TfrmPrincipal = class(TForm)
@@ -29,6 +29,10 @@ type
     CATEGORIA2: TMenuItem;
     FICHADECLIENTE1: TMenuItem;
     PRODUTOSPORCATEGORIA1: TMenuItem;
+    USURIO1: TMenuItem;
+    N5: TMenuItem;
+    ALTERARSENHA1: TMenuItem;
+    StbPrincipal: TStatusBar;
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Categoria1Click(Sender: TObject);
@@ -42,6 +46,9 @@ type
     procedure Produto2Click(Sender: TObject);
     procedure PRODUTOSPORCATEGORIA1Click(Sender: TObject);
     procedure Vendapordata1Click(Sender: TObject);
+    procedure USURIO1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ALTERARSENHA1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -54,12 +61,17 @@ type
 
 var
   frmPrincipal: TfrmPrincipal;
+  oUsuarioLogado: TUsuarioLogado;
+
+
 
 implementation
 
 {$R *.dfm}
 
-uses uCadCategoria, uCadCliente, uCadProduto, uProVenda, uRelCategoria, cCadCliente, uRelCadCliente, uRelCadClienteFicha, uRelCadProduto, uRelCadProdutoComGrupoCategoria, uSelecionarData, uRelVendaPorData;
+uses uCadCategoria, uCadCliente, uCadProduto, uProVenda, uRelCategoria,
+ cCadCliente, uRelCadCliente, uRelCadClienteFicha, uRelCadProduto,
+  uRelCadProdutoComGrupoCategoria, uSelecionarData, uRelVendaPorData, uLogin, uAlterarSenha;
 
 procedure TfrmPrincipal.Categoria1Click(Sender: TObject);
 begin
@@ -100,6 +112,10 @@ procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FreeAndNil(TeclaEnter);
   FreeAndNil(dtmPrincipal);
+
+  if Assigned(oUsuarioLogado) then
+     FreeAndNil(oUsuarioLogado);
+
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -145,6 +161,22 @@ begin
 
 end;
 
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+
+  try
+    oUsuarioLogado := TUsuarioLogado.Create;
+
+    frmLogin := TfrmLogin.Create(Self);
+    frmLogin.ShowModal;
+
+  finally
+    frmLogin.Release;
+    StbPrincipal.Panels[0].Text :='USUÁRIO: '+oUsuarioLogado.nome;
+  end;
+
+ end;
+
 procedure TfrmPrincipal.menuFecharClick(Sender: TObject);
 begin
    Close;
@@ -173,6 +205,13 @@ begin
   frmRelCadProdutoComGrupoCategoria.Release;
 end;
 
+procedure TfrmPrincipal.USURIO1Click(Sender: TObject);
+begin
+  frmCadUsuario := TfrmCadUsuario.Create (Self);
+  frmCadUsuario.ShowModal;
+  frmCadUsuario.Release;
+end;
+
 procedure TfrmPrincipal.Vendapordata1Click(Sender: TObject);
 begin
   Try
@@ -186,7 +225,6 @@ begin
     frmRelProVendaPorData.QryVendas.Open;
     frmRelProVendaPorData.Relatorio.PreviewModal;
 
-
   finally
     frmSelecionarData.Release;
   end;
@@ -199,6 +237,13 @@ begin
   frmProVenda.Release;
 end;
 
+procedure TfrmPrincipal.ALTERARSENHA1Click(Sender: TObject);
+begin
+  frmAlterarSenha := TfrmAlterarSenha.Create (Self);
+  frmAlterarSenha.ShowModal;
+  frmAlterarSenha.Release;
+end;
+
 procedure TfrmPrincipal.AtualizacaoBancoDados(aForm: TfrmAtualizaDB);
 begin
   aForm.chkConexao.Checked := true;
@@ -207,27 +252,32 @@ begin
   DtmPrincipal.QryScriptCategorias.ExecSQL;
   AForm.chkCategoria.Checked := True;
   aForm.Refresh;
-  Sleep(200);
+  Sleep(100);
 
   DtmPrincipal.QryScriptProdutos.ExecSQL;
   AForm.chkProduto.Checked := True;
   aForm.Refresh;
-  Sleep(200);
+  Sleep(100);
 
   DtmPrincipal.QryScriptClientes.ExecSQL;
   AForm.chkCliente.Checked := True;
   aForm.Refresh;
-  Sleep(200);
+  Sleep(100);
 
   DtmPrincipal.QryScriptVendas.ExecSQL;
   AForm.chkVendas.Checked := True;
   aForm.Refresh;
-  Sleep(200);
+  Sleep(100);
 
   DtmPrincipal.QryScriptItensVendas.ExecSQL;
   AForm.chkItensVenda.Checked := True;
   aForm.Refresh;
-  Sleep(200);
+  Sleep(100);
+
+  DtmPrincipal.QryScriptUsuarios.ExecSQL;
+  AForm.chkUsuarios.Checked := True;
+  aForm.Refresh;
+  Sleep(100);
 
 end;
 
