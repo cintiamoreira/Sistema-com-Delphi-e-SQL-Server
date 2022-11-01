@@ -25,7 +25,13 @@ uses
   uRelCadProduto in 'relatorio\uRelCadProduto.pas' {frmRelCadProduto},
   uSelecionarData in 'relatorio\uSelecionarData.pas' {frmSelecionarData},
   uRelCadProdutoComGrupoCategoria in 'relatorio\uRelCadProdutoComGrupoCategoria.pas' {frmRelCadProdutoComGrupoCategoria},
-  uRelVendaPorData in 'relatorio\uRelVendaPorData.pas' {frmRelProVendaPorData};
+  uRelVendaPorData in 'relatorio\uRelVendaPorData.pas' {frmRelProVendaPorData},
+  uFuncaoCriptografia in 'heranca\uFuncaoCriptografia.pas',
+  cCadUsuario in 'classes\cCadUsuario.pas',
+  uCadUsuario in 'cadastro\uCadUsuario.pas' {frmCadUsuario},
+  uLogin in 'login\uLogin.pas' {frmLogin},
+  uAlterarSenha in 'login\uAlterarSenha.pas' {frmAlterarSenha},
+  cUsuarioLogado in 'login\cUsuarioLogado.pas';
 
 {$R *.res}
 

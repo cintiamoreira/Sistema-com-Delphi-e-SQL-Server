@@ -1,0 +1,64 @@
+unit frmCadUsuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, Data.DB,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.ComCtrls, Vcl.DBCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  uEnum, cCadUsuario;
+
+type
+   TfrmCadUsuario = class(frmCadUsuario)
+    QryListagemusuarioID: TIntegerField;
+    QryListagemNome: TWideStringField;
+    QryListagemSenha: TWideStringField;
+    edtNome: TLabeledEdit;
+    edtUsuarioId: TLabeledEdit;
+    edtSenha: TLabeledEdit;
+
+    procedure btnAlterarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+
+  private
+    { Private declarations }
+
+    oUsuario:TUsuario;
+    function Gravar (EstadoDoCadastro : TEstadoDoCadastro) : Boolean; override;
+    function Apagar : Boolean; override;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadUsuario: TfrmCadUsuario;
+
+implementation
+
+{$R *.dfm}
+
+
+{TfrmCadUsuario}
+
+function TfrmCadUsuario.Apagar : Boolean;
+begin
+  if oUsuario.Selecionar(QryListagem.FieldByName('usuarioID').AsInteger) then
+    begin
+      Result:=oUsuario.Apagar;
+    end;
+end;
+
+
+function TfrmCadUsuario.Gravar(EstadoDoCadastro: TEstadoDoCadastro) : Boolean;
+begin
+  if EstadoDoCadastro=ecInserir then
+      Result := oUsuario.Inserir
+  else if EstadoDoCadastro=ecAlterar then
+       Result := oUsuario.Atualizar;
+end;
+end.

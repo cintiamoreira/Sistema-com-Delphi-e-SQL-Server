@@ -27,10 +27,6 @@ object frmAtualizaDB: TfrmAtualizaDB
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 400
-    ExplicitTop = 176
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnl2: TPanel
       Left = 6
       Top = 6
@@ -42,10 +38,6 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 408
-      ExplicitTop = 232
-      ExplicitWidth = 185
-      ExplicitHeight = 41
       object img1: TImage
         Left = 24
         Top = 32
@@ -538,7 +530,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkConexao: TCheckBox
         Left = 328
-        Top = 80
+        Top = 66
         Width = 185
         Height = 17
         Caption = 'Conex'#227'o com Banco de Dados'
@@ -546,7 +538,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkCategoria: TCheckBox
         Left = 328
-        Top = 120
+        Top = 96
         Width = 185
         Height = 17
         Caption = 'Categoria'
@@ -554,7 +546,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkProduto: TCheckBox
         Left = 328
-        Top = 155
+        Top = 129
         Width = 185
         Height = 17
         Caption = 'Produto'
@@ -562,7 +554,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkCliente: TCheckBox
         Left = 328
-        Top = 192
+        Top = 165
         Width = 185
         Height = 17
         Caption = 'Cliente'
@@ -570,7 +562,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkVendas: TCheckBox
         Left = 328
-        Top = 224
+        Top = 202
         Width = 185
         Height = 17
         Caption = 'Vendas'
@@ -578,11 +570,19 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkItensVenda: TCheckBox
         Left = 328
-        Top = 264
+        Top = 235
         Width = 193
         Height = 17
         Caption = 'Itens Venda'
         TabOrder = 5
+      end
+      object chkUsuarios: TCheckBox
+        Left = 328
+        Top = 271
+        Width = 193
+        Height = 17
+        Caption = 'Usu'#225'rios'
+        TabOrder = 6
       end
     end
   end
