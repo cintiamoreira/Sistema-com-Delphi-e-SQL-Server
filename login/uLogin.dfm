@@ -6,7 +6,7 @@ object frmLogin: TfrmLogin
   Caption = 'frmLogin'
   ClientHeight = 173
   ClientWidth = 384
-  Color = clBtnFace
+  Color = clGradientInactiveCaption
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

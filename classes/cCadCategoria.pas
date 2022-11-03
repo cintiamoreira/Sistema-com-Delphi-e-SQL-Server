@@ -95,8 +95,11 @@ begin
     Qry.ParamByName('categoriaId').AsInteger := F_categoriaId;
 
     try
-     Qry.ExecSQL;
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
     except
+      ConexaoDB.Rollback;
      Result := False;
     end;
 
@@ -122,8 +125,11 @@ begin
     Qry.ParamByName('descricao').AsString    := Self.F_descricao;
 
     try
-     Qry.ExecSQL;
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
     except
+      ConexaoDB.Rollback;
      Result := False;
     end;
 
@@ -143,11 +149,16 @@ begin
     Qry.SQL.Clear;
     Qry.SQL.Add('INSERT INTO categorias (descricao) values (:descricao)');
     Qry.ParamByName('descricao').AsString := Self.F_descricao;
-      try
-        Qry.ExecSQL;
-      except
-        Result := False;
-      end;
+
+     try
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
+    except
+      ConexaoDB.Rollback;
+     Result := False;
+    end;
+
   finally
     if Assigned (Qry) then
        FreeAndNil (Qry);

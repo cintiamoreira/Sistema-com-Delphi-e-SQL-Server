@@ -63,9 +63,9 @@ object frmAlterarSenha: TfrmAlterarSenha
     Alignment = taCenter
     AutoSize = False
     Caption = 'xxxxxxxxx'
-    Color = clBtnFace
+    Color = 15202559
     Font.Charset = ANSI_CHARSET
-    Font.Color = 16442595
+    Font.Color = clGray
     Font.Height = -16
     Font.Name = 'Roboto'
     Font.Style = [fsBold]

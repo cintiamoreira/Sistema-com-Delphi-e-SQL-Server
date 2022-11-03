@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   Caption = 'Menu Principal'
   ClientHeight = 587
   ClientWidth = 867
-  Color = 16442595
+  Color = clGradientInactiveCaption
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -27,9 +27,6 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 150
       end>
-    ExplicitLeft = 504
-    ExplicitTop = 576
-    ExplicitWidth = 0
   end
   object mainPrincipal: TMainMenu
     Left = 808

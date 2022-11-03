@@ -81,6 +81,7 @@ begin
     Qry.SQL.Add('DELETE FROM clientes '+
                 ' WHERE clienteId=:clienteId ');
     Qry.ParamByName('clienteId').AsInteger :=F_clienteId;
+
     Try
       ConexaoDB.StartTransaction;
       Qry.ExecSQL;
@@ -89,6 +90,7 @@ begin
       ConexaoDB.Rollback;
       Result := false;
     End;
+
   finally
     if Assigned(Qry) then
        FreeAndNil(Qry);
@@ -123,6 +125,7 @@ begin
     Qry.ParamByName('telefone').AsString         :=Self.F_telefone;
     Qry.ParamByName('email').AsString            :=Self.F_email;
     Qry.ParamByName('dataNascimento').AsDateTime :=Self.F_dataNascimento;
+
     Try
       ConexaoDB.StartTransaction;
       Qry.ExecSQL;
@@ -131,6 +134,7 @@ begin
       ConexaoDB.Rollback;
       Result:=false;
     End;
+
   finally
     if Assigned(Qry) then
        FreeAndNil(Qry);
@@ -171,6 +175,7 @@ begin
     Qry.ParamByName('telefone').AsString         :=Self.F_telefone;
     Qry.ParamByName('email').AsString            :=Self.F_email;
     Qry.ParamByName('dataNascimento').AsDateTime :=Self.F_dataNascimento;
+
     Try
       ConexaoDB.StartTransaction;
       Qry.ExecSQL;
@@ -179,6 +184,7 @@ begin
       ConexaoDB.Rollback;
       Result:=false;
     End;
+
   finally
     if Assigned(Qry) then
        FreeAndNil(Qry);
