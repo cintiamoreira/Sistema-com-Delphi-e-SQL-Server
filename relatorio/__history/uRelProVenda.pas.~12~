@@ -1,0 +1,78 @@
+unit uRelProVenda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, uDTMConexao,
+  RLReport, RLFilters, RLPDFFilter, RLXLSFilter, RLXLSXFilter;
+
+type
+  TfrmRelProVenda = class(TForm)
+    QryVendas: TZQuery;
+    dtsVendas: TDataSource;
+    RLPDFFilter1: TRLPDFFilter;
+    RLXLSXFilter1: TRLXLSXFilter;
+    RLXLSFilter1: TRLXLSFilter;
+    QryVendasItens: TZQuery;
+    dtsVendasItens: TDataSource;
+    Relatorio: TRLReport;
+    Cabecalho: TRLBand;
+    RLDraw1: TRLDraw;
+    Rodape: TRLBand;
+    RLDraw2: TRLDraw;
+    RLSystemInfo1: TRLSystemInfo;
+    RLSystemInfo2: TRLSystemInfo;
+    RLSystemInfo3: TRLSystemInfo;
+    RLLabel1: TRLLabel;
+    RLLabel2: TRLLabel;
+    BandaDoGrupo: TRLGroup;
+    RLBand3: TRLBand;
+    RLLabel7: TRLLabel;
+    RLDBText5: TRLDBText;
+    RLBand1: TRLBand;
+    RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText4: TRLDBText;
+    RLBand5: TRLBand;
+    RLDraw4: TRLDraw;
+    RLLabel6: TRLLabel;
+    RLDBResult2: TRLDBResult;
+    QryVendasvendaId: TIntegerField;
+    QryVendasclienteId: TIntegerField;
+    QryVendasnome: TWideStringField;
+    QryVendasdataVenda: TDateTimeField;
+    QryVendastotalVenda: TFloatField;
+    QryVendasItensvendaId: TIntegerField;
+    QryVendasItensprodutoId: TIntegerField;
+    QryVendasItensNome: TWideStringField;
+    QryVendasItensquantidade: TFloatField;
+    QryVendasItensvalorUnitario: TFloatField;
+    QryVendasItenstotalProduto: TFloatField;
+    RLLabel4: TRLLabel;
+    RLLabel5: TRLLabel;
+    procedure FormDestroy(Sender: TObject);
+
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+
+  end;
+
+var
+  frmRelProVenda: TfrmRelProVenda;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmRelProVenda.FormDestroy(Sender: TObject);
+begin
+   QryVendas.Close;
+   QryVendasItens.Close;
+end;
+
+end.
