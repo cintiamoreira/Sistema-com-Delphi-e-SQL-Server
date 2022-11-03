@@ -31,8 +31,7 @@ end;
 
 
 class function TArquivoIni.LerIni(aSecao:String; aEntrada:String):String;
-var
-  Ini: TIniFile;
+var Ini: TIniFile;
 begin
   try
     Ini := TIniFile.Create(ArquivoIni);
@@ -46,8 +45,7 @@ end;
 
 
 class procedure TArquivoIni.AtualizarIni(aSecao:String; aEntrada:String; aValor:String);
-var
-  Ini: TIniFile;
+var  Ini: TIniFile;
 begin
   try
     Ini := TIniFile.Create(ArquivoIni);
