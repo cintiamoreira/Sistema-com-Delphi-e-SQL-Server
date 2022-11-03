@@ -34,6 +34,7 @@ type
     N5: TMenuItem;
     ALTERARSENHA1: TMenuItem;
     StbPrincipal: TStatusBar;
+    Image1: TImage;
 
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -162,33 +163,29 @@ begin
     Application.Terminate;
 
   end
-
   else
+  begin
+    frmAtualizaDB:=TfrmAtualizaDB.Create(self);
+    frmAtualizaDB.Show;
+    frmAtualizaDB.Refresh;
+
+    dtmPrincipal:=TDtmPrincipal.Create(self);     //Instancia o DataModule
+    with DtmPrincipal.ConexaoDB do
     begin
-       frmAtualizaDB := TfrmAtualizaDB.Create(self);
-       frmAtualizaDB.Show;
-       frmAtualizaDB.Refresh;
-
-       dtmPrincipal := TdtmPrincipal.Create(Self);
-
-       with dtmPrincipal.ConexaoDB do
-       begin
-         Connected:=False;
-         SQLHourGlass := False;
-
-         if TArquivoIni.LerIni ('SERVER','TipoDataBase')='MSSQL' then
-            Protocol := 'mssql';  //Protocolo do banco de dados
-
-            LibraryLocation := 'C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
-            HostName:= TArquivoIni.LerIni('SERVER','HostName');       //Instancia do SQLServer
-            Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
-            User    := TArquivoIni.LerIni('SERVER','User');       //Usuario do Banco de Dados
-            Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
-            Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
-            AutoCommit:= True;
-            TransactIsolationLevel:=tiReadCommitted;
-            Connected:=True;  //Faz a Conexão do Banco
-
+      Connected:=False;
+      SQLHourGlass:=False;
+      if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
+         Protocol:='mssql';  //Protocolo do banco de dados
+      LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
+      HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer
+      Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
+      User    := TArquivoIni.LerIni('SERVER','User');  //Usuario do Banco de Dados
+      Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
+      Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
+      AutoCommit:= True;
+      TransactIsolationLevel:=tiReadCommitted;
+      Connected:=True;  //Faz a Conexão do Banco
+    end;
        end;
 
        AtualizacaoBancoDados(frmAtualizaDB);
@@ -197,8 +194,8 @@ begin
        TeclaEnter := TMREnter.Create(Self);
        TeclaEnter.FocusEnabled := True;
        TeclaEnter.FocusColor := clInfoBk;
-    end;
 end;
+
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
