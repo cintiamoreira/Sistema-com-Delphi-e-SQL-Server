@@ -4,7 +4,7 @@ object frmAtualizaDB: TfrmAtualizaDB
   BorderStyle = bsNone
   Caption = 'frmAtualizaDB'
   ClientHeight = 338
-  ClientWidth = 651
+  ClientWidth = 815
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object frmAtualizaDB: TfrmAtualizaDB
   object pnl1: TPanel
     Left = 0
     Top = 0
-    Width = 651
+    Width = 815
     Height = 338
     Align = alClient
     BevelOuter = bvLowered
@@ -27,10 +27,11 @@ object frmAtualizaDB: TfrmAtualizaDB
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 651
     object pnl2: TPanel
       Left = 6
       Top = 6
-      Width = 639
+      Width = 803
       Height = 326
       Align = alClient
       BevelOuter = bvNone
@@ -38,9 +39,10 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 659
       object img1: TImage
-        Left = 24
-        Top = 32
+        Left = 61
+        Top = 33
         Width = 256
         Height = 256
         AutoSize = True
@@ -516,11 +518,11 @@ object frmAtualizaDB: TfrmAtualizaDB
           92660E456E700D0000000049454E44AE426082}
       end
       object lbl1: TLabel
-        Left = 328
-        Top = 32
-        Width = 268
+        Left = 349
+        Top = 33
+        Width = 282
         Height = 23
-        Caption = 'Atualiza'#231#227'o Banco de dados'
+        Caption = 'Atualiza'#231#227'o Banco de dados. '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -528,61 +530,18 @@ object frmAtualizaDB: TfrmAtualizaDB
         Font.Style = []
         ParentFont = False
       end
-      object chkConexao: TCheckBox
-        Left = 328
-        Top = 66
-        Width = 185
-        Height = 17
-        Caption = 'Conex'#227'o com Banco de Dados'
-        TabOrder = 0
-      end
-      object chkCategoria: TCheckBox
-        Left = 328
-        Top = 96
-        Width = 185
-        Height = 17
-        Caption = 'Categoria'
-        TabOrder = 1
-      end
-      object chkProduto: TCheckBox
-        Left = 328
-        Top = 129
-        Width = 185
-        Height = 17
-        Caption = 'Produto'
-        TabOrder = 2
-      end
-      object chkCliente: TCheckBox
-        Left = 328
-        Top = 165
-        Width = 185
-        Height = 17
-        Caption = 'Cliente'
-        TabOrder = 3
-      end
-      object chkVendas: TCheckBox
-        Left = 328
-        Top = 202
-        Width = 185
-        Height = 17
-        Caption = 'Vendas'
-        TabOrder = 4
-      end
-      object chkItensVenda: TCheckBox
-        Left = 328
-        Top = 235
-        Width = 193
-        Height = 17
-        Caption = 'Itens Venda'
-        TabOrder = 5
-      end
-      object chkUsuarios: TCheckBox
-        Left = 328
-        Top = 271
-        Width = 193
-        Height = 17
-        Caption = 'Usu'#225'rios'
-        TabOrder = 6
+      object Label1: TLabel
+        Left = 349
+        Top = 63
+        Width = 116
+        Height = 23
+        Caption = 'AGUARDE...'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
       end
     end
   end

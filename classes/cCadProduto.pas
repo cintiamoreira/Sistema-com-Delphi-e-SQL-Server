@@ -87,11 +87,14 @@ begin
                 ' WHERE produtoId=:produtoId ');
     Qry.ParamByName('produtoId').AsInteger :=F_produtoId;
 
-    Try
+    try
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-    Except
-      Result:=false;
-    End;
+      ConexaoDB.Commit;
+      except
+      ConexaoDB.Rollback;
+     Result := False;
+      end;
 
   finally
     if Assigned(Qry) then
@@ -121,13 +124,16 @@ begin
     Qry.ParamByName('valor').AsFloat             :=Self.F_valor;
     Qry.ParamByName('quantidade').AsFloat        :=Self.F_quantidade;
     Qry.ParamByName('categoriaId').AsInteger     :=Self.F_categoriaId;
-    Try
 
+    try
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-    Except
+      ConexaoDB.Commit;
+    except
+      ConexaoDB.Rollback;
+     Result := False;
+    end;
 
-      Result:=false;
-    End;
   finally
     if Assigned(Qry) then
        FreeAndNil(Qry);
@@ -158,13 +164,15 @@ begin
     Qry.ParamByName('quantidade').AsFloat        :=Self.F_quantidade;
     Qry.ParamByName('categoriaId').AsInteger     :=Self.F_categoriaId;
 
-    Try
-
+    try
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-    Except
+      ConexaoDB.Commit;
+     except
+      ConexaoDB.Rollback;
+      Result := False;
+    end;
 
-      Result:=false;
-    End;
   finally
     if Assigned(Qry) then
        FreeAndNil(Qry);

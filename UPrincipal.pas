@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.Menus, uDTMConexao, Enter, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  uFrmAtualizaDB, uCadUsuario, cUsuarioLogado, Vcl.ComCtrls;
+  uFrmAtualizaDB, uCadUsuario, cUsuarioLogado, Vcl.ComCtrls, ZDbcIntfs,
+  cAtualizacaoBancoDeDados, System.UITypes;
 
 type
   TfrmPrincipal = class(TForm)
@@ -33,6 +34,7 @@ type
     N5: TMenuItem;
     ALTERARSENHA1: TMenuItem;
     StbPrincipal: TStatusBar;
+
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Categoria1Click(Sender: TObject);
@@ -49,6 +51,7 @@ type
     procedure USURIO1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ALTERARSENHA1Click(Sender: TObject);
+
   private
     { Private declarations }
 
@@ -63,15 +66,14 @@ var
   frmPrincipal: TfrmPrincipal;
   oUsuarioLogado: TUsuarioLogado;
 
-
-
 implementation
 
 {$R *.dfm}
 
 uses uCadCategoria, uCadCliente, uCadProduto, uProVenda, uRelCategoria,
- cCadCliente, uRelCadCliente, uRelCadClienteFicha, uRelCadProduto,
-  uRelCadProdutoComGrupoCategoria, uSelecionarData, uRelVendaPorData, uLogin, uAlterarSenha;
+     cCadCliente, uRelCadCliente, uRelCadClienteFicha, uRelCadProduto,
+     uRelCadProdutoComGrupoCategoria, uSelecionarData, uRelVendaPorData,
+     uLogin, uAlterarSenha, cArquivoIni;
 
 procedure TfrmPrincipal.Categoria1Click(Sender: TObject);
 begin
@@ -120,45 +122,82 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  {
-   dtmConexao :=  TdtmConexao.Create(Self);
-   dtmConexao.ConexaoDB.SQLHourGlass := True;
-   dtmConexao.ConexaoDB.Protocol := 'mssql';
-   dtmConexao.ConexaoDB.LibraryLocation := 'C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
-   dtmConexao.ConexaoDB.HostName := '.\SQLEXPRESS';
-   dtmConexao.ConexaoDB.Port := 1433;
-   dtmConexao.ConexaoDB.User := 'sa';
-   dtmConexao.ConexaoDB.Password := 'ciih';
-   dtmConexao.ConexaoDB.Database := 'vendas';
-   dtmConexao.ConexaoDB.Connected := True;
-   }
+   {
+  DtmPrincipal:=TDtmPrincipal.Create(self);     //Instancia o DataModule
+  DtmPrincipal.ConexaoDB.SQLHourGlass:=True;    //Habilita o Cursor em cada transação no banco de dados
+  DtmPrincipal.ConexaoDB.LibraryLocation:=ExtractFilePath(Application.ExeName)+'ntwdblib.dll';  //Seta a DLL para conexao do SQL
+  DtmPrincipal.ConexaoDB.Protocol:='mssql';  //Protocolo do banco de dados
+  DtmPrincipal.ConexaoDB.HostName:='.\INSTANCIA'; //Instancia do SQLServer
+  DtmPrincipal.ConexaoDB.Port:=1433;          //Porta do SQL Server
+  DtmPrincipal.ConexaoDB.User := 'sa';  //Usuario do Banco de Dados
+  DtmPrincipal.ConexaoDB.Password:='SENHA';  //Senha do Usuário do banco
+  DtmPrincipal.ConexaoDB.Database:='BANCODEDADOS';  //Nome do Banco de Dados
+  DtmPrincipal.ConexaoDB.Connected:=True;  //Faz a Conexão do Banco
+  }
+{  DtmPrincipal:=TDtmPrincipal.Create(self);     //Instancia o DataModule
+  with DtmPrincipal.ConexaoDB do begin
+    SQLHourGlass:=True;    //Habilita o Cursor em cada transação no banco de dados
+    LibraryLocation:=ExtractFilePath(Application.ExeName)+'ntwdblib.dll';  //Seta a DLL para conexao do SQL
+    Protocol:='mssql';  //Protocolo do banco de dados
+    HostName:='.\SERVERCURSO'; //Instancia do SQLServer
+    Port:=1433;          //Porta do SQL Server
+    User := 'sa';  //Usuario do Banco de Dados
+    Password:='mudar@123';  //Senha do Usuário do banco
+    Database:='vendas';  //Nome do Banco de Dados
+    Connected:=True;  //Faz a Conexão do Banco
+  end;
+  }
 
-   frmAtualizaDB := TfrmAtualizaDB.Create(self);
-   frmAtualizaDB.Show;
-   frmAtualizaDB.Refresh;
+  if not FileExists(TArquivoIni.ArquivoIni) then
+  begin
+    TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
+    TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\');
+    TArquivoIni.AtualizarIni('SERVER', 'Port', '1433');
+    TArquivoIni.AtualizarIni('SERVER', 'User', 'sa');
+    TArquivoIni.AtualizarIni('SERVER', 'Password', 'ciih');
+    TArquivoIni.AtualizarIni('SERVER', 'Database', 'vendas');
 
-   dtmPrincipal := TdtmPrincipal.Create(Self);
-   with dtmPrincipal.ConexaoDB do
-   begin
-     SQLHourGlass := True;
-     Protocol := 'mssql';
-     LibraryLocation := 'C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
-     HostName := '.\SQLEXPRESS';
-     Port := 1433;
-     User := 'sa';
-     Password := 'ciih';
-     Database := 'vendas';
-     Connected := True;
+    MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
+               'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
+    Application.Terminate;
 
-   end;
+  end
 
-   AtualizacaoBancoDados(frmAtualizaDB);
-   frmAtualizaDB.Free;
+  else
+    begin
+       frmAtualizaDB := TfrmAtualizaDB.Create(self);
+       frmAtualizaDB.Show;
+       frmAtualizaDB.Refresh;
 
-   TeclaEnter := TMREnter.Create(Self);
-   TeclaEnter.FocusEnabled := True;
-   TeclaEnter.FocusColor := clInfoBk;
+       dtmPrincipal := TdtmPrincipal.Create(Self);
 
+       with dtmPrincipal.ConexaoDB do
+       begin
+         Connected:=False;
+         SQLHourGlass := False;
+
+         if TArquivoIni.LerIni ('SERVER','TipoDataBase')='MSSQL' then
+            Protocol := 'mssql';  //Protocolo do banco de dados
+
+            LibraryLocation := 'C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
+            HostName:= TArquivoIni.LerIni('SERVER','HostName');       //Instancia do SQLServer
+            Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
+            User    := TArquivoIni.LerIni('SERVER','User');       //Usuario do Banco de Dados
+            Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
+            Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
+            AutoCommit:= True;
+            TransactIsolationLevel:=tiReadCommitted;
+            Connected:=True;  //Faz a Conexão do Banco
+
+       end;
+
+       AtualizacaoBancoDados(frmAtualizaDB);
+       frmAtualizaDB.Free;
+
+       TeclaEnter := TMREnter.Create(Self);
+       TeclaEnter.FocusEnabled := True;
+       TeclaEnter.FocusColor := clInfoBk;
+    end;
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -245,40 +284,18 @@ begin
 end;
 
 procedure TfrmPrincipal.AtualizacaoBancoDados(aForm: TfrmAtualizaDB);
+var oAtualizarMSSQL:TAtualizaBancoDadosMSSQL;
 begin
-  aForm.chkConexao.Checked := true;
+  //aForm.chkConexao.Checked := true;
   aForm.Refresh;
 
-  DtmPrincipal.QryScriptCategorias.ExecSQL;
-  AForm.chkCategoria.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
-
-  DtmPrincipal.QryScriptProdutos.ExecSQL;
-  AForm.chkProduto.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
-
-  DtmPrincipal.QryScriptClientes.ExecSQL;
-  AForm.chkCliente.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
-
-  DtmPrincipal.QryScriptVendas.ExecSQL;
-  AForm.chkVendas.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
-
-  DtmPrincipal.QryScriptItensVendas.ExecSQL;
-  AForm.chkItensVenda.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
-
-  DtmPrincipal.QryScriptUsuarios.ExecSQL;
-  AForm.chkUsuarios.Checked := True;
-  aForm.Refresh;
-  Sleep(100);
+  try
+    oAtualizarMSSQL := TAtualizaBancoDadosMSSQL.Create(dtmPrincipal.ConexaoDB);
+    oAtualizarMSSQL.AtualizarBancoDeDadosMSSQL;
+  finally
+    if Assigned(oAtualizarMSSQL) then
+       FreeAndNil(oAtualizarMSSQL);
+  end;
 
 end;
-
 end.

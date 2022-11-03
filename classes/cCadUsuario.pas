@@ -84,11 +84,11 @@ begin
     Qry.ParamByName('usuarioId').AsInteger :=F_usuarioId;
 
     Try
-     // ConexaoDB.StartTransaction;
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-     // ConexaoDB.Commit;
+      ConexaoDB.Commit;
     Except
-     // ConexaoDB.Rollback;
+      ConexaoDB.Rollback;
       Result:=false;
     End;
   finally
@@ -115,11 +115,11 @@ begin
     Qry.ParamByName('senha').AsString            :=Self.F_Senha;
 
     Try
-     // ConexaoDB.StartTransaction;
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-     // ConexaoDB.Commit;
+      ConexaoDB.Commit;
     Except
-     // ConexaoDB.Rollback;
+      ConexaoDB.Rollback;
       Result:=false;
     End;
   finally
@@ -143,11 +143,11 @@ begin
     Qry.ParamByName('nome').AsString             :=Self.F_nome;
     Qry.ParamByName('senha').AsString            :=Self.F_senha;
     Try
-     // ConexaoDB.StartTransaction;
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-     // ConexaoDB.Commit;
+      ConexaoDB.Commit;
     Except
-     // ConexaoDB.Rollback;
+      ConexaoDB.Rollback;
       Result:=false;
     End;
   finally

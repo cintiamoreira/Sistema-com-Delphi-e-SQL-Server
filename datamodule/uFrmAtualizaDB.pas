@@ -13,13 +13,7 @@ type
     pnl2: TPanel;
     img1: TImage;
     lbl1: TLabel;
-    chkConexao: TCheckBox;
-    chkCategoria: TCheckBox;
-    chkProduto: TCheckBox;
-    chkCliente: TCheckBox;
-    chkVendas: TCheckBox;
-    chkItensVenda: TCheckBox;
-    chkUsuarios: TCheckBox;
+    Label1: TLabel;
   private
     { Private declarations }
   public

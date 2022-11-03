@@ -159,18 +159,17 @@ begin
         cds.Next;
       end;
 
+      ConexaoDB.Commit;
 
     Except
       Result:=false;
       ConexaoDB.Rollback;
     End;
 
-    ConexaoDB.Commit;
-
-  finally
-    if Assigned(Qry) then
-       FreeAndNil(Qry);
-  end;
+      finally
+       if Assigned(Qry) then
+          FreeAndNil(Qry);
+      end;
 end;
 
 
@@ -270,19 +269,20 @@ begin
     Qry.ParamByName('vendaId').AsInteger    :=Self.F_vendaId;
 
     Try
-      //ConexaoDB.StartTransaction;
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
-      //ConexaoDB.Commit;
-    Except
+      ConexaoDB.Commit;
 
-      //ConexaoDB.Rollback;
+      Except
+
+      ConexaoDB.Rollback;
       Result:=false;
-    End;
+      End;
 
-  finally
+    finally
     if Assigned(Qry) then
        FreeAndNil(Qry);
-  end;
+    end;
 end;
 
 function TVenda.InNot(cds:TClientDataSet):String;
@@ -367,10 +367,14 @@ begin
     Qry.ParamByName('TotalProduto').AsFloat := cds.FieldByName('valorTotalProduto').AsFloat;
 
     try
+      ConexaoDB.StartTransaction;
       Qry.ExecSQL;
+      ConexaoDB.Commit;
+
       BaixarEstoque(cds.FieldByName('produtoId').AsInteger,
                     cds.FieldByName('quantidade').AsFloat);
     Except
+      ConexaoDB.Rollback;
       Result:=false;
     End;
 
